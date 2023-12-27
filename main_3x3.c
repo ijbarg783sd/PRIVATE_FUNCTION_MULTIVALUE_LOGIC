@@ -329,7 +329,7 @@ int main() {
                     }
                 }
 
-                if(countBitCentrale != -1) { //NUMERO DI OCCORRENZE BIT CENTRALE
+                if(countBitCentrale == 6) { //NUMERO DI OCCORRENZE BIT CENTRALE
 
                     //FORZA PATTERN
 
@@ -343,38 +343,31 @@ int main() {
 //                    if(bitCentrale == mtx[0][0] && bitCentrale == mtx[0][2]) {
 //                    if(bitCentrale == mtx[0][2] && bitCentrale == mtx[2][0]) {
 
-                    // PATTERN 5 - UNICO PATTERN NECESSARIO/SUFFICIENTE
-//                    if((bitCentrale != mtx[0][1] && bitCentrale != mtx[1][2] && bitCentrale != mtx[2][1] && bitCentrale != mtx[1][0]) ||
+                    // PATTERN 4
+//                    if(bitCentrale == mtx[0][0] && bitCentrale == mtx[0][1] && bitCentrale == mtx[1][0]) {
+//                    if(bitCentrale == mtx[0][1] && bitCentrale == mtx[0][2] && bitCentrale == mtx[1][2]) {
+//                    if(bitCentrale == mtx[1][2] && bitCentrale == mtx[2][2] && bitCentrale == mtx[2][1]) {
+//                    if(bitCentrale == mtx[1][0] && bitCentrale == mtx[2][0] && bitCentrale == mtx[2][1]) {
+
+
+                    // PATTERN 5.1 - NECESSARIO/SUFFICIENTE (x32)
+//                    if(
 //                       (bitCentrale != mtx[0][1] && bitCentrale != mtx[0][2] && bitCentrale != mtx[1][0] && bitCentrale != mtx[2][0]) ||
 //                       (bitCentrale != mtx[0][0] && bitCentrale != mtx[0][1] && bitCentrale != mtx[1][2] && bitCentrale != mtx[2][2]) ||
 //                       (bitCentrale != mtx[0][2] && bitCentrale != mtx[1][2] && bitCentrale != mtx[2][0] && bitCentrale != mtx[2][1]) ||
 //                       (bitCentrale != mtx[0][0] && bitCentrale != mtx[1][0] && bitCentrale != mtx[2][1] && bitCentrale != mtx[2][2])
 //                    ){
 
-//                    if(bitCentrale == mtx[0][0] || bitCentrale == mtx[0][2] || bitCentrale == mtx[2][0] || bitCentrale == mtx[2][2]) {
-//                    if(bitCentrale != mtx[0][1] && bitCentrale != mtx[0][2] && bitCentrale != mtx[1][0] && bitCentrale != mtx[2][0]) {
-//                    if(bitCentrale != mtx[0][0] && bitCentrale != mtx[0][1] && bitCentrale != mtx[1][2] && bitCentrale != mtx[2][2]) {
-//                    if(bitCentrale != mtx[0][2] && bitCentrale != mtx[1][2] && bitCentrale != mtx[2][0] && bitCentrale != mtx[2][1]) {
-//                    if(bitCentrale != mtx[0][0] && bitCentrale != mtx[1][0] && bitCentrale != mtx[2][1] && bitCentrale != mtx[2][2]) {
-//                    if(bitCentrale != mtx[0][1] && bitCentrale != mtx[1][0] && bitCentrale != mtx[1][2] && bitCentrale != mtx[2][1]) {
+                    // PATTERN 5.2 - NECESSARIO/SUFFICIENTE (x8)
+//                    if (bitCentrale != mtx[0][1] && bitCentrale != mtx[1][2] && bitCentrale != mtx[2][1] && bitCentrale != mtx[1][0]) {
 
-//4a 4b
-//                    if(bitCentrale == mtx[0][0] && bitCentrale == mtx[0][1] && bitCentrale == mtx[1][0]) {
-//                    if(bitCentrale == mtx[0][1] && bitCentrale == mtx[0][2] && bitCentrale == mtx[1][2]) {
-//                    if(bitCentrale == mtx[1][2] && bitCentrale == mtx[2][2] && bitCentrale == mtx[2][1]) {
-//                    if(bitCentrale == mtx[1][0] && bitCentrale == mtx[2][0] && bitCentrale == mtx[2][1]) {
-
-//4c
-//                    if(bitCentrale == mtx[0][0] && bitCentrale == mtx[2][0] && bitCentrale == mtx[1][2]) {
-//                    if(bitCentrale == mtx[0][0] && bitCentrale == mtx[0][2] && bitCentrale == mtx[2][1]) {
-//                    if(bitCentrale == mtx[0][2] && bitCentrale == mtx[2][2] && bitCentrale == mtx[1][0]) {
-//                    if(bitCentrale == mtx[0][1] && bitCentrale == mtx[2][0] && bitCentrale == mtx[2][2]) {
-
-
-
-    //                    if(bitCentrale == mtx[0][1] || bitCentrale == mtx[1][2] || bitCentrale == mtx[2][1] || bitCentrale == mtx[1][0]) {
-
-    //                    if(bitCentrale == mtx[0][1]) {
+                    // PATTERN 6.1 - NECESSARIO/SUFFICIENTE
+//                    if(
+//                       (bitCentrale != mtx[0][0] && bitCentrale != mtx[0][1] && bitCentrale != mtx[0][2]) ||
+//                       (bitCentrale != mtx[0][0] && bitCentrale != mtx[1][0] && bitCentrale != mtx[2][0]) ||
+//                       (bitCentrale != mtx[0][2] && bitCentrale != mtx[1][2] && bitCentrale != mtx[2][2]) ||
+//                       (bitCentrale != mtx[2][0] && bitCentrale != mtx[2][1] && bitCentrale != mtx[2][2])
+//                    ){
 
 
                         if (bitCentrale == bit1) {
@@ -456,13 +449,13 @@ int main() {
 
 
 //                            if ( //if countBit1 2 3
-////                                    (countBit2 == 2 && countBit3 == 3) || (countBit2 == 3 && countBit3 == 2) ||
-////                                    (countBit1 == 2 && countBit3 == 3) || (countBit1 == 3 && countBit3 == 2) ||
-////                                    (countBit1 == 2 && countBit2 == 3) || (countBit1 == 3 && countBit2 == 2)
-//
-////                                                        (countBit2 == 3 && countBit3 == 3) ||
-////                                                        (countBit1 == 3 && countBit3 == 3) ||
-////                                                        (countBit1 == 3 && countBit2 == 3)
+//                                    (countBit2 == 2 && countBit3 == 6) || (countBit2 == 6 && countBit3 == 2) ||
+//                                    (countBit1 == 2 && countBit3 == 6) || (countBit1 == 6 && countBit3 == 2) ||
+//                                    (countBit1 == 2 && countBit2 == 6) || (countBit1 == 6 && countBit2 == 2)
+
+//                                                        (countBit2 == 4 && countBit3 == 4) ||
+//                                                        (countBit1 == 4 && countBit3 == 4) ||
+//                                                        (countBit1 == 4 && countBit2 == 4)
 //
 //
 //
@@ -507,16 +500,17 @@ int main() {
                                 } else if (mtxType == 12) { //NON CP - VIETATA 2x3
 
                                     cont_ncp_2x3++;
-                                    //                            printMtxToFile(mtx, logPtr23, cont_MtxNoDuplicate, mtxType, bit1, bit2, bit3, cont_ncp_2x3, countRC3bit, countStraight, count1for2, countCoppiaRow,
-                                    //                                           countCoppiaCol);
-
+                                    printMtxToFile(mtx, logPtr23, cont_MtxNoDuplicate, mtxType, bit1, bit2, bit3, bitCentrale,
+                                                   cont_ncp_2x2, countRC3bit, countStraight, count1for2, countCoppiaRow,
+                                                   countCoppiaCol);
 
                                 } else if (mtxType == 13) { //NON CP - VIETATA 3x2
 
                                     cont_ncp_3x2++;
-                                    //                            printMtxToFile(mtx, logPtr24, cont_MtxNoDuplicate, mtxType, bit1, bit2, bit3, cont_ncp_3x2, countRC3bit, countStraight, count1for2, countCoppiaRow,
-                                    //                                           countCoppiaCol);
 
+                                    printMtxToFile(mtx, logPtr24, cont_MtxNoDuplicate, mtxType, bit1, bit2, bit3, bitCentrale,
+                                                   cont_ncp_2x2, countRC3bit, countStraight, count1for2, countCoppiaRow,
+                                                   countCoppiaCol);
 
                                 } else { //CP - ammessa (perchè NON vietata)
 
@@ -656,24 +650,23 @@ int setBit3(int mtx[ NUM ][ NUM ], int bit1, int bit2) {
 
 }
 
-//VfNY3sFpYYEeJLxxCRbV
 
 int checkMtx(int mtx[ NUM ][ NUM ]) {
-//    if (checkMtx3x3(mtx) == 1) {
-//        return 10; //VIETATA TRUE - NON CP
+//    if (checkMtx2x3(mtx) == 1) {
+//        return 12; //VIETATA TRUE - NON CP
+//    }
+//    if (checkMtx3x2(mtx) == 1) {
+//        return 13; //VIETATA TRUE - NON CP
 //    }
     if (checkMtx2x2(mtx) == 1) {
         return 11; //VIETATA TRUE - NON CP
     }
-    else if (checkMtx2x3(mtx) == 1) {
-        return 12; //VIETATA TRUE - NON CP
-    }
-    else if (checkMtx3x2(mtx) == 1) {
-        return 13; //VIETATA TRUE - NON CP
-    }
-    else {      //VIETATA FALSE - CP
-        return 1; //CP TRUE - AMMESSA (NON VIETATA)
-    }
+//    if (checkMtx3x3(mtx) == 1) {
+//        return 10; //VIETATA TRUE - NON CP
+//    }
+
+    return 1; //CP TRUE - AMMESSA (NON VIETATA)
+
 }
 
 int checkMtx3x3(int mtx[ NUM ][ NUM ]) {
