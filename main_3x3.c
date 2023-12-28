@@ -329,60 +329,60 @@ int main() {
                     }
                 }
 
-                if(countBitCentrale != -1) { //NUMERO DI OCCORRENZE BIT CENTRALE
+                if(countBitCentrale == 4) { //NUMERO DI OCCORRENZE BIT CENTRALE
 
                     //FORZA PATTERN
 
                     // FORZA PATTERN NEGATIVO
-                    if(
-                        //3 VERTICI
-                        (!(mtx[0][0] == mtx[0][2] && mtx[0][2] == mtx[2][2] && mtx[2][2] == mtx[0][0] && mtx[0][0] != mtx[2][0]) &&
-                         !(mtx[0][2] == mtx[2][2] && mtx[2][2] == mtx[2][0] && mtx[2][0] == mtx[0][2] && mtx[0][2] != mtx[0][0]) &&
-                         !(mtx[2][2] == mtx[2][0] && mtx[2][0] == mtx[0][0] && mtx[0][0] == mtx[2][2] && mtx[2][2] != mtx[0][2]) &&
-                         !(mtx[2][0] == mtx[0][0] && mtx[0][0] == mtx[0][2] && mtx[0][2] == mtx[2][0] && mtx[2][0] != mtx[2][2]) )
-                        &&
-                        //"L" UNITA
-                        (!(mtx[0][0] == mtx[0][1] && mtx[0][1] == mtx[1][1] && mtx[1][1] == mtx[0][0] && mtx[0][0] != mtx[1][0]) &&
-                         !(mtx[0][1] == mtx[1][1] && mtx[1][1] == mtx[1][0] && mtx[1][0] == mtx[0][1] && mtx[0][1] != mtx[0][0]) &&
-                         !(mtx[1][1] == mtx[1][0] && mtx[1][0] == mtx[0][0] && mtx[0][0] == mtx[1][1] && mtx[1][1] != mtx[0][1]) &&
-                         !(mtx[1][0] == mtx[0][0] && mtx[0][0] == mtx[0][1] && mtx[0][1] == mtx[1][0] && mtx[1][0] != mtx[1][1]) )
-                        &&
-                        (!(mtx[0][1] == mtx[0][2] && mtx[0][2] == mtx[1][2] && mtx[1][2] == mtx[0][1] && mtx[0][1] != mtx[1][1]) &&
-                         !(mtx[0][2] == mtx[1][2] && mtx[1][2] == mtx[1][1] && mtx[1][1] == mtx[0][2] && mtx[0][2] != mtx[0][1]) &&
-                         !(mtx[1][2] == mtx[1][1] && mtx[1][1] == mtx[0][1] && mtx[0][1] == mtx[1][2] && mtx[1][2] != mtx[0][2]) &&
-                         !(mtx[1][1] == mtx[0][1] && mtx[0][1] == mtx[0][2] && mtx[0][2] == mtx[1][1] && mtx[1][1] != mtx[1][2]) )
-                        &&
-                        (!(mtx[1][0] == mtx[1][1] && mtx[1][1] == mtx[2][1] && mtx[2][1] == mtx[1][0] && mtx[1][0] != mtx[2][0]) &&
-                         !(mtx[1][1] == mtx[2][1] && mtx[2][1] == mtx[2][0] && mtx[2][0] == mtx[1][1] && mtx[1][1] != mtx[1][0]) &&
-                         !(mtx[2][1] == mtx[2][0] && mtx[2][0] == mtx[1][0] && mtx[1][0] == mtx[2][1] && mtx[2][1] != mtx[1][1]) &&
-                         !(mtx[2][0] == mtx[1][0] && mtx[1][0] == mtx[1][1] && mtx[1][1] == mtx[2][0] && mtx[2][0] != mtx[2][1]) )
-                        &&
-                        (!(mtx[1][1] == mtx[1][2] && mtx[1][2] == mtx[2][2] && mtx[2][2] == mtx[1][1] && mtx[1][1] != mtx[2][1]) &&
-                         !(mtx[1][2] == mtx[2][2] && mtx[2][2] == mtx[2][1] && mtx[2][1] == mtx[1][2] && mtx[1][2] != mtx[1][1]) &&
-                         !(mtx[2][2] == mtx[2][1] && mtx[2][1] == mtx[1][1] && mtx[1][1] == mtx[2][2] && mtx[2][2] != mtx[1][2]) &&
-                         !(mtx[2][1] == mtx[1][1] && mtx[1][1] == mtx[1][2] && mtx[1][2] == mtx[2][1] && mtx[2][1] != mtx[2][2]) )
-                        &&
-                        //"L" STACCATA
-                        (!(mtx[0][0] == mtx[0][1] && mtx[0][0] == mtx[2][0] && mtx[0][1] == mtx[2][0] && mtx[0][0] != mtx[2][1]) &&
-                         !(mtx[0][0] == mtx[0][1] && mtx[0][0] == mtx[2][1] && mtx[0][1] == mtx[2][1] && mtx[0][0] != mtx[2][0]) &&
-                         !(mtx[0][1] == mtx[0][2] && mtx[0][1] == mtx[2][1] && mtx[0][2] == mtx[2][1] && mtx[0][1] != mtx[2][2]) &&
-                         !(mtx[0][1] == mtx[0][2] && mtx[0][1] == mtx[2][2] && mtx[0][2] == mtx[2][2] && mtx[0][1] != mtx[2][1]) )
-                        &&
-                        (!(mtx[0][2] == mtx[1][2] && mtx[0][2] == mtx[0][0] && mtx[1][2] == mtx[0][0] && mtx[0][2] != mtx[1][0]) &&
-                         !(mtx[0][2] == mtx[1][2] && mtx[0][2] == mtx[1][0] && mtx[1][2] == mtx[1][0] && mtx[0][2] != mtx[0][0]) &&
-                         !(mtx[1][2] == mtx[2][2] && mtx[1][2] == mtx[1][0] && mtx[2][2] == mtx[1][0] && mtx[1][2] != mtx[2][0]) &&
-                         !(mtx[1][2] == mtx[2][2] && mtx[1][2] == mtx[2][0] && mtx[2][2] == mtx[2][0] && mtx[1][2] != mtx[1][0]) )
-                        &&
-                        (!(mtx[2][0] == mtx[2][1] && mtx[2][0] == mtx[0][0] && mtx[2][1] == mtx[0][0] && mtx[2][0] != mtx[0][1]) &&
-                         !(mtx[2][0] == mtx[2][1] && mtx[2][0] == mtx[0][1] && mtx[2][1] == mtx[0][1] && mtx[2][0] != mtx[0][0]) &&
-                         !(mtx[2][1] == mtx[2][2] && mtx[2][1] == mtx[0][1] && mtx[2][2] == mtx[0][1] && mtx[2][1] != mtx[0][2]) &&
-                         !(mtx[2][1] == mtx[2][2] && mtx[2][1] == mtx[0][2] && mtx[2][2] == mtx[0][2] && mtx[2][1] != mtx[0][1]) )
-                        &&
-                        (!(mtx[0][0] == mtx[1][0] && mtx[0][0] == mtx[0][2] && mtx[1][0] == mtx[0][2] && mtx[0][0] != mtx[1][2]) &&
-                         !(mtx[0][0] == mtx[1][0] && mtx[0][0] == mtx[1][2] && mtx[1][0] == mtx[1][2] && mtx[0][0] != mtx[0][2]) &&
-                         !(mtx[1][0] == mtx[2][0] && mtx[1][0] == mtx[1][2] && mtx[2][0] == mtx[1][2] && mtx[1][0] != mtx[2][2]) &&
-                         !(mtx[1][0] == mtx[2][0] && mtx[1][0] == mtx[2][2] && mtx[2][0] == mtx[2][2] && mtx[1][0] != mtx[1][2]) )
-                    ) {
+//                    if(
+//                        //3 VERTICI
+//                        (!(mtx[0][0] == mtx[0][2] && mtx[0][2] == mtx[2][2] && mtx[2][2] == mtx[0][0] && mtx[0][0] != mtx[2][0]) &&
+//                         !(mtx[0][2] == mtx[2][2] && mtx[2][2] == mtx[2][0] && mtx[2][0] == mtx[0][2] && mtx[0][2] != mtx[0][0]) &&
+//                         !(mtx[2][2] == mtx[2][0] && mtx[2][0] == mtx[0][0] && mtx[0][0] == mtx[2][2] && mtx[2][2] != mtx[0][2]) &&
+//                         !(mtx[2][0] == mtx[0][0] && mtx[0][0] == mtx[0][2] && mtx[0][2] == mtx[2][0] && mtx[2][0] != mtx[2][2]) )
+//                        &&
+//                        //"L" UNITA
+//                        (!(mtx[0][0] == mtx[0][1] && mtx[0][1] == mtx[1][1] && mtx[1][1] == mtx[0][0] && mtx[0][0] != mtx[1][0]) &&
+//                         !(mtx[0][1] == mtx[1][1] && mtx[1][1] == mtx[1][0] && mtx[1][0] == mtx[0][1] && mtx[0][1] != mtx[0][0]) &&
+//                         !(mtx[1][1] == mtx[1][0] && mtx[1][0] == mtx[0][0] && mtx[0][0] == mtx[1][1] && mtx[1][1] != mtx[0][1]) &&
+//                         !(mtx[1][0] == mtx[0][0] && mtx[0][0] == mtx[0][1] && mtx[0][1] == mtx[1][0] && mtx[1][0] != mtx[1][1]) )
+//                        &&
+//                        (!(mtx[0][1] == mtx[0][2] && mtx[0][2] == mtx[1][2] && mtx[1][2] == mtx[0][1] && mtx[0][1] != mtx[1][1]) &&
+//                         !(mtx[0][2] == mtx[1][2] && mtx[1][2] == mtx[1][1] && mtx[1][1] == mtx[0][2] && mtx[0][2] != mtx[0][1]) &&
+//                         !(mtx[1][2] == mtx[1][1] && mtx[1][1] == mtx[0][1] && mtx[0][1] == mtx[1][2] && mtx[1][2] != mtx[0][2]) &&
+//                         !(mtx[1][1] == mtx[0][1] && mtx[0][1] == mtx[0][2] && mtx[0][2] == mtx[1][1] && mtx[1][1] != mtx[1][2]) )
+//                        &&
+//                        (!(mtx[1][0] == mtx[1][1] && mtx[1][1] == mtx[2][1] && mtx[2][1] == mtx[1][0] && mtx[1][0] != mtx[2][0]) &&
+//                         !(mtx[1][1] == mtx[2][1] && mtx[2][1] == mtx[2][0] && mtx[2][0] == mtx[1][1] && mtx[1][1] != mtx[1][0]) &&
+//                         !(mtx[2][1] == mtx[2][0] && mtx[2][0] == mtx[1][0] && mtx[1][0] == mtx[2][1] && mtx[2][1] != mtx[1][1]) &&
+//                         !(mtx[2][0] == mtx[1][0] && mtx[1][0] == mtx[1][1] && mtx[1][1] == mtx[2][0] && mtx[2][0] != mtx[2][1]) )
+//                        &&
+//                        (!(mtx[1][1] == mtx[1][2] && mtx[1][2] == mtx[2][2] && mtx[2][2] == mtx[1][1] && mtx[1][1] != mtx[2][1]) &&
+//                         !(mtx[1][2] == mtx[2][2] && mtx[2][2] == mtx[2][1] && mtx[2][1] == mtx[1][2] && mtx[1][2] != mtx[1][1]) &&
+//                         !(mtx[2][2] == mtx[2][1] && mtx[2][1] == mtx[1][1] && mtx[1][1] == mtx[2][2] && mtx[2][2] != mtx[1][2]) &&
+//                         !(mtx[2][1] == mtx[1][1] && mtx[1][1] == mtx[1][2] && mtx[1][2] == mtx[2][1] && mtx[2][1] != mtx[2][2]) )
+//                        &&
+//                        //"L" STACCATA
+//                        (!(mtx[0][0] == mtx[0][1] && mtx[0][0] == mtx[2][0] && mtx[0][1] == mtx[2][0] && mtx[0][0] != mtx[2][1]) &&
+//                         !(mtx[0][0] == mtx[0][1] && mtx[0][0] == mtx[2][1] && mtx[0][1] == mtx[2][1] && mtx[0][0] != mtx[2][0]) &&
+//                         !(mtx[0][1] == mtx[0][2] && mtx[0][1] == mtx[2][1] && mtx[0][2] == mtx[2][1] && mtx[0][1] != mtx[2][2]) &&
+//                         !(mtx[0][1] == mtx[0][2] && mtx[0][1] == mtx[2][2] && mtx[0][2] == mtx[2][2] && mtx[0][1] != mtx[2][1]) )
+//                        &&
+//                        (!(mtx[0][2] == mtx[1][2] && mtx[0][2] == mtx[0][0] && mtx[1][2] == mtx[0][0] && mtx[0][2] != mtx[1][0]) &&
+//                         !(mtx[0][2] == mtx[1][2] && mtx[0][2] == mtx[1][0] && mtx[1][2] == mtx[1][0] && mtx[0][2] != mtx[0][0]) &&
+//                         !(mtx[1][2] == mtx[2][2] && mtx[1][2] == mtx[1][0] && mtx[2][2] == mtx[1][0] && mtx[1][2] != mtx[2][0]) &&
+//                         !(mtx[1][2] == mtx[2][2] && mtx[1][2] == mtx[2][0] && mtx[2][2] == mtx[2][0] && mtx[1][2] != mtx[1][0]) )
+//                        &&
+//                        (!(mtx[2][0] == mtx[2][1] && mtx[2][0] == mtx[0][0] && mtx[2][1] == mtx[0][0] && mtx[2][0] != mtx[0][1]) &&
+//                         !(mtx[2][0] == mtx[2][1] && mtx[2][0] == mtx[0][1] && mtx[2][1] == mtx[0][1] && mtx[2][0] != mtx[0][0]) &&
+//                         !(mtx[2][1] == mtx[2][2] && mtx[2][1] == mtx[0][1] && mtx[2][2] == mtx[0][1] && mtx[2][1] != mtx[0][2]) &&
+//                         !(mtx[2][1] == mtx[2][2] && mtx[2][1] == mtx[0][2] && mtx[2][2] == mtx[0][2] && mtx[2][1] != mtx[0][1]) )
+//                        &&
+//                        (!(mtx[0][0] == mtx[1][0] && mtx[0][0] == mtx[0][2] && mtx[1][0] == mtx[0][2] && mtx[0][0] != mtx[1][2]) &&
+//                         !(mtx[0][0] == mtx[1][0] && mtx[0][0] == mtx[1][2] && mtx[1][0] == mtx[1][2] && mtx[0][0] != mtx[0][2]) &&
+//                         !(mtx[1][0] == mtx[2][0] && mtx[1][0] == mtx[1][2] && mtx[2][0] == mtx[1][2] && mtx[1][0] != mtx[2][2]) &&
+//                         !(mtx[1][0] == mtx[2][0] && mtx[1][0] == mtx[2][2] && mtx[2][0] == mtx[2][2] && mtx[1][0] != mtx[1][2]) )
+//                    ) { // END FORZA PATTERN NEGATIVO
 
                     //PATTERN 2
 //                    if(bitCentrale == mtx[1][0]) {
@@ -396,13 +396,20 @@ int main() {
 
                     // PATTERN 4.1 (x28 / 4 = x7)
 //                    if(
-//                            (bitCentrale != mtx[0][2] && bitCentrale != mtx[1][2] && bitCentrale != mtx[2][2] &&
-//                            bitCentrale != mtx[2][1] && bitCentrale != mtx[2][0]) &&
+//                            (bitCentrale != mtx[0][2] && bitCentrale != mtx[1][2] && bitCentrale != mtx[2][2] && bitCentrale != mtx[2][1] && bitCentrale != mtx[2][0]) &&
 //                             !(mtx[0][2] == mtx[2][2] && mtx[2][0] == mtx[2][2] && mtx[2][0] == mtx[0][2]) &&
 //                             !(mtx[1][2] == mtx[2][2] && mtx[2][1] == mtx[2][2] && mtx[2][1] == mtx[1][2]) &&
 //                             !(mtx[2][1] == mtx[2][2] && mtx[2][2] == mtx[0][2] && mtx[0][2] == mtx[2][1]) &&
 //                             !(mtx[1][2] == mtx[2][2] && mtx[2][2] == mtx[2][0] && mtx[2][0] == mtx[1][2])
-//
+//                    ) {
+
+                    // PATTERN 4.2 (x24 / 4 = x6)
+//                    if(
+//                            (bitCentrale != mtx[0][1] && bitCentrale != mtx[0][2] && bitCentrale != mtx[1][0] && bitCentrale != mtx[2][1] && bitCentrale != mtx[2][2]) &&
+//                             !(mtx[0][1] == mtx[0][2] && mtx[0][1] == mtx[2][1] && mtx[2][1] == mtx[0][2]) &&
+//                             !(mtx[0][1] == mtx[0][2] && mtx[0][1] == mtx[2][2] && mtx[2][2] == mtx[0][2]) &&
+//                             !(mtx[2][1] == mtx[2][2] && mtx[2][1] == mtx[0][1] && mtx[0][1] == mtx[2][2]) &&
+//                             !(mtx[2][1] == mtx[2][2] && mtx[2][1] == mtx[0][2] && mtx[0][2] == mtx[2][2])
 //                    ) {
 
                     // PATTERN 5.1 - NECESSARIO/SUFFICIENTE (x32)
@@ -416,7 +423,7 @@ int main() {
                     // PATTERN 5.2 - NECESSARIO/SUFFICIENTE (x8)
 //                    if (bitCentrale != mtx[0][1] && bitCentrale != mtx[1][2] && bitCentrale != mtx[2][1] && bitCentrale != mtx[1][0]) {
 
-                    // PATTERN 6.1 - NECESSARIO/SUFFICIENTE
+                    // PATTERN 6.1 - NECESSARIO/SUFFICIENTE (x16)
 //                    if(
 //                       (bitCentrale != mtx[0][0] && bitCentrale != mtx[0][1] && bitCentrale != mtx[0][2]) ||
 //                       (bitCentrale != mtx[0][0] && bitCentrale != mtx[1][0] && bitCentrale != mtx[2][0]) ||
