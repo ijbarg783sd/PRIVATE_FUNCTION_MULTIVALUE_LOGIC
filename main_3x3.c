@@ -581,10 +581,10 @@ int main() {
                     // PATTERN 4.2 (x24 / 4 = x6)
 //                    if(
 //                            (bitCentrale != mtx[0][1] && bitCentrale != mtx[0][2] && bitCentrale != mtx[1][0] && bitCentrale != mtx[2][1] && bitCentrale != mtx[2][2]) &&
-//                             !(mtx[0][1] == mtx[0][2] && mtx[0][1] == mtx[2][1] && mtx[2][1] == mtx[0][2]) &&
-//                             !(mtx[0][1] == mtx[0][2] && mtx[0][1] == mtx[2][2] && mtx[2][2] == mtx[0][2]) &&
-//                             !(mtx[2][1] == mtx[2][2] && mtx[2][1] == mtx[0][1] && mtx[0][1] == mtx[2][2]) &&
-//                             !(mtx[2][1] == mtx[2][2] && mtx[2][1] == mtx[0][2] && mtx[0][2] == mtx[2][2])
+//                             !(mtx[0][1] == mtx[0][2] && mtx[0][1] == mtx[2][1] && mtx[2][1] == mtx[0][2] && mtx[0][1] != mtx[2][2]) &&
+//                             !(mtx[0][1] == mtx[0][2] && mtx[0][1] == mtx[2][2] && mtx[2][2] == mtx[0][2] && mtx[0][1] != mtx[2][1]) &&
+//                             !(mtx[2][1] == mtx[2][2] && mtx[2][1] == mtx[0][1] && mtx[0][1] == mtx[2][2] && mtx[2][1] != mtx[0][2]) &&
+//                             !(mtx[2][1] == mtx[2][2] && mtx[2][1] == mtx[0][2] && mtx[0][2] == mtx[2][2] && mtx[2][1] != mtx[0][1])
 //                    ) {
 
                     // PATTERN 5.1 - NECESSARIO/SUFFICIENTE (x32)
@@ -778,7 +778,7 @@ int main() {
                                 //                        } // countCoppiaRow countCoppiaCol
 //                            } //END if countBit1 2 3
 //                        } //END tipo RC
-                    } //END FORZA PATTERN
+//                    } //END FORZA PATTERN
                 } //END  //NUMERO OCCORRENZE BIT CENTRALE
             }
         }
