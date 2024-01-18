@@ -54,10 +54,15 @@ int main() {
 //    }
 
     for(int i = 0; i<=26; i++) {
-        printf("a: %d | b: %d | c: %d\n", abc[i][0], abc[i][1], abc[i][2]);
+        printf("i: %d | a: %d | b: %d | c: %d\n", i, abc[i][0], abc[i][1], abc[i][2]);
         for(int x = 0; x <= 2; x++) {
             for(int y = 0; y <= 2; y++) {
-                res = (abc[i][0]*x*x + abc[i][1]*y*y + abc[i][2]) % 3;
+//                res = (abc[i][0]*x*x + abc[i][1]*y*y*y + abc[i][2]) % 3; //RISPETTO ADDIZIONE
+//                res = ((abc[i][0]*x + abc[i][1]*y + abc[i][2]) + (abc[i][0]*x + abc[i][1]*y + abc[i][2])) % 3; //RISPETTO ADDIZIONE
+//                res = ((abc[i][0]*x + abc[i][0]*x + abc[i][2])) % 3; //RISPETTO ADDIZIONE
+//                res = (x*(2-x)+y*(2-y)+x*y*(2-x)*(2-y)) % 3;
+                res = (x*(2-x)) % 3;
+//                res = (abc[i][0]*x*x*x * abc[i][1]*y*y*y * abc[i][2]) % 3; //RISPETTO ADDIZIONE
 //                printf("x:%d|y:%d\n", x, y);
                 printf("%3d", res);
             }
