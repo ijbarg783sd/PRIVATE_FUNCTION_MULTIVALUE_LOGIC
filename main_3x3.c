@@ -712,7 +712,11 @@ int main() {
 
                                 //                        if(countCoppiaRow == 1 && countCoppiaCol == 1) {
 
+                                /********************************************/
+                                /********************************************/
                                 mtxType = checkMtx(mtx); //controllo MATRICI
+                                /********************************************/
+                                /********************************************/
                                 int arrNumCount[] = {0, 0, 0};
                                 //                sumMtx(mtx, arrNumSum, arrNumCount, arrHowMany012, arrDistribution); //spostare in uno dei rami if seguenti per indagare le singole tipologie
                                 if (mtxType == 10) { //NON CP - VIETATA 3x3
