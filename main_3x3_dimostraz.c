@@ -8,10 +8,11 @@
 
 // PROTOTIPI
 void initMtx( int mtx[ NUM ][ NUM ] );
+void initMtx2( int mtx[ NUM ][ NUM ] );
 void rowPerm( int mtx[ NUM ][ NUM ], int riga, int numPerm, int valori[3], int lenValori, int lenPerm );
-void printMtxToFile( int mtx[ NUM ][ NUM ], FILE *fPtr, int cont_Mtx, int mtxType, int bit1, int bit2, int bit3, int bitCentrale, int idx, int countRC3bit, int countStraight, int count1for2, int countCoppiaRow, int countCoppiaCol, int sign );
-int checkMtx(int mtx[ NUM ][ NUM ], int* arrSign2);
-int checkMtx3x3(int mtx[ NUM ][ NUM ]);
+void printMtxToFile( int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ], FILE *fPtr, int cont_Mtx, int mtxType, int bit1, int bit2, int bit3, int bitCentrale, int idx, int countRC3bit, int countStraight, int count1for2, int countCoppiaRow, int countCoppiaCol, int sign );
+int checkMtx(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ], int* arrSign2);
+int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]);
 int checkMtxMono3x3(int mtx[ NUM ][ NUM ]);
 int checkMono2x2C_AS(int mtx[ NUM ][ NUM ]); //CONTIGUE (4)
 int checkMono2x2C_AD(int mtx[ NUM ][ NUM ]);
@@ -46,6 +47,7 @@ int main() {
 
 
     int mtx[ NUM ][ NUM ];
+    int mtx2[ NUM ][ NUM ];
 
     FILE *logPtr1, *logPtr21, *logPtr22, *logPtr23, *logPtr24, *logPtr3, *logPtr4, *logPtr5;
     int arr[] = {0, 1, 2};
@@ -174,6 +176,7 @@ int main() {
     }
 
     initMtx( mtx );
+    initMtx2( mtx2 );
 
     fflush( logPtr1 ); // rilascia dati ancora scritti
     fflush( logPtr21 ); // rilascia dati ancora scritti
@@ -716,7 +719,7 @@ int main() {
 
                                 /********************************************/
                                 /********************************************/
-                                mtxType = checkMtx(mtx, arrSign2); //controllo MATRICI
+                                mtxType = checkMtx(mtx, mtx2, arrSign2); //controllo MATRICI
                                 /********************************************/
                                 /********************************************/
                                 int arrNumCount[] = {0, 0, 0};
@@ -724,7 +727,7 @@ int main() {
                                 if (mtxType > 999 && mtxType < 1100) { //NON CP - VIETATA 3x3
 
                                     cont_ncp_3x3++; //0 - NON CP - vietata o monocromatica
-                                    printMtxToFile(mtx, logPtr21, cont_MtxNoDuplicate, mtxType, bit1, bit2, bit3, bitCentrale,
+                                    printMtxToFile(mtx, mtx2, logPtr21, cont_MtxNoDuplicate, mtxType, bit1, bit2, bit3, bitCentrale,
                                                    cont_ncp_3x3, countRC3bit, countStraight, count1for2, countCoppiaRow,
                                                    countCoppiaCol, mtxType);
 
@@ -735,7 +738,7 @@ int main() {
                                 } else if (mtxType == 11) { //NON CP - VIETATA 2x2
 
                                     cont_ncp_2x2++;
-                                    printMtxToFile(mtx, logPtr22, cont_MtxNoDuplicate, mtxType, bit1, bit2, bit3, bitCentrale,
+                                    printMtxToFile(mtx, mtx2, logPtr22, cont_MtxNoDuplicate, mtxType, bit1, bit2, bit3, bitCentrale,
                                                    cont_ncp_2x2, countRC3bit, countStraight, count1for2, countCoppiaRow,
                                                    countCoppiaCol, sign2);
 
@@ -743,7 +746,7 @@ int main() {
                                 } else if (mtxType == 12) { //NON CP - VIETATA 2x3
 
                                     cont_ncp_2x3++;
-                                    printMtxToFile(mtx, logPtr23, cont_MtxNoDuplicate, mtxType, bit1, bit2, bit3, bitCentrale,
+                                    printMtxToFile(mtx, mtx2, logPtr23, cont_MtxNoDuplicate, mtxType, bit1, bit2, bit3, bitCentrale,
                                                    cont_ncp_2x2, countRC3bit, countStraight, count1for2, countCoppiaRow,
                                                    countCoppiaCol, sign2);
 
@@ -751,7 +754,7 @@ int main() {
 
                                     cont_ncp_3x2++;
 
-                                    printMtxToFile(mtx, logPtr24, cont_MtxNoDuplicate, mtxType, bit1, bit2, bit3, bitCentrale,
+                                    printMtxToFile(mtx, mtx2, logPtr24, cont_MtxNoDuplicate, mtxType, bit1, bit2, bit3, bitCentrale,
                                                    cont_ncp_2x2, countRC3bit, countStraight, count1for2, countCoppiaRow,
                                                    countCoppiaCol, sign2);
 
@@ -762,7 +765,7 @@ int main() {
                                     idx3++;
 
                                     //                        if(sumMtx(mtx, arrNumSum) == 15) {
-                                    printMtxToFile(mtx, logPtr3, cont_Mtx, mtxType, bit1, bit2, bit3, bitCentrale, idx3,
+                                    printMtxToFile(mtx, mtx2, logPtr3, cont_Mtx, mtxType, bit1, bit2, bit3, bitCentrale, idx3,
                                                    countRC3bit, countStraight, count1for2, countCoppiaRow, countCoppiaCol, sign2);
                                     //
                                     //                        }
@@ -775,7 +778,7 @@ int main() {
 
                                 }
                                 //stampa TUTTE LE MATRICI
-                                printMtxToFile(mtx, logPtr1, cont_MtxNoDuplicate, mtxType, bit1, bit2, bit3, bitCentrale, idx,
+                                printMtxToFile(mtx, mtx2, logPtr1, cont_MtxNoDuplicate, mtxType, bit1, bit2, bit3, bitCentrale, idx,
                                                countRC3bit, countStraight, count1for2, countCoppiaRow, countCoppiaCol, sign2);
 
                                 //                    }
@@ -856,6 +859,18 @@ void initMtx( int mtx[ NUM ][ NUM ] ) {
 
 } //end initMtx
 
+void initMtx2( int mtx[ NUM ][ NUM ] ) {
+
+    int r, c;
+
+    for ( r = 0; r < NUM; r++ ) {
+        for ( c = 0; c < NUM; c++ ) {
+            mtx[ r ][ c ] = 9;
+        }
+    }
+
+} //end initMtx
+
 void rowPerm( int mtx[ NUM ][ NUM ], int riga, int numPerm, int valori[3], int lenValori, int lenPerm ) {
 
     for ( int i = 0; i < lenPerm; i++ ) {
@@ -894,7 +909,7 @@ int setBit3(int mtx[ NUM ][ NUM ], int bit1, int bit2) {
 }
 
 
-int checkMtx(int mtx[ NUM ][ NUM ], int* arrSign2) {
+int checkMtx(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ], int* arrSign2) {
 //    if (checkMtx2x3(mtx) == 1) {
 //        return 12; //VIETATA TRUE - NON CP
 //    }
@@ -904,13 +919,13 @@ int checkMtx(int mtx[ NUM ][ NUM ], int* arrSign2) {
 //    if (checkMtx2x2(mtx) == 1) {
 //        return 11; //VIETATA TRUE - NON CP
 //    }
-    if (checkMtx3x3(mtx) != 0) {
+    if (checkMtx3x3(mtx, mtx2) != 0) {
 
-        arrSign2[checkMtx3x3(mtx)]++;
+        arrSign2[checkMtx3x3(mtx, mtx2)]++;
 
-        if(arrSign2[checkMtx3x3(mtx)] != 1) return 1;
+        if(arrSign2[checkMtx3x3(mtx, mtx2)] != 1) return 1;
 
-        return checkMtx3x3(mtx); //VIETATA TRUE - NON CP
+        return checkMtx3x3(mtx, mtx2); //VIETATA TRUE - NON CP
 
     }
 
@@ -918,7 +933,7 @@ int checkMtx(int mtx[ NUM ][ NUM ], int* arrSign2) {
 
 }
 
-int checkMtx3x3(int mtx[ NUM ][ NUM ]) {
+int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
 
     int equivR = 0;
     int equivC = 0;
@@ -926,6 +941,9 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ]) {
     char strEquivC[3] = {'\0'};
     char sign[6] = {'\0'};
     int intSign;
+
+
+    initMtx2(mtx2);
 
 //    if (checkMtxMono3x3(mtx) == 1) {
 //        return 2; //MONO 3x3 TRUE
@@ -937,6 +955,10 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ]) {
         if(mtx[0][i] == mtx[1][i]) { //relaz in prime 2 righe
             for(int j = 0; j <= 2; j++) {
                 if(mtx[1][j] == mtx[2][j]) { //relaz in 2a e 3a riga OPPURE in 1a e 3a riga
+                    mtx2[0][i] = mtx[0][i];
+                    mtx2[1][i] = mtx[1][i];
+                    mtx2[1][j] = mtx[1][j];
+                    mtx2[2][j] = mtx[2][j];
                     if (i == 0 && j == 0) equivR = 10;
                     if (i == 0 && j == 1) equivR = 11;
                     if (i == 0 && j == 2) equivR = 12;
@@ -1786,7 +1808,7 @@ int concat(int x, int y, int z){
     return a;
 }
 
-void printMtxToFile( int mtx[ NUM ][ NUM ], FILE *fPtr, int cont_Mtx, int mtxType, int bit1, int bit2, int bit3, int bitCentrale, int idx, int countRC3bit, int countStraight, int count1for2, int countCoppiaRow, int countCoppiaCol, int sign ) {
+void printMtxToFile( int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ], FILE *fPtr, int cont_Mtx, int mtxType, int bit1, int bit2, int bit3, int bitCentrale, int idx, int countRC3bit, int countStraight, int count1for2, int countCoppiaRow, int countCoppiaCol, int sign ) {
 
 //    *countInterno = *countInterno + 1;
 
@@ -1821,33 +1843,37 @@ void printMtxToFile( int mtx[ NUM ][ NUM ], FILE *fPtr, int cont_Mtx, int mtxTyp
         fprintf( fPtr, "%2d |", r );
 
         for ( c = 0; c < NUM; c++ ) {
-//            fprintf( fPtr, "%3d", mtx[ r ][ c ] ); //stampa il bit reale
-            if (bitCentrale == bit1) {
-                if( mtx[ r ][ c ] == bit1) {
-                    fprintf( fPtr, "%3c", 'A' );
+//            fprintf( fPtr, "%3d", mtx2[ r ][ c ] ); //stampa il bit reale
+            if (mtx2[ r ][ c ] == 9) {
+                fprintf( fPtr, "%3c", '-' );
+            } else {
+                if (bitCentrale == bit1) {
+                    if( mtx2[ r ][ c ] == bit1) {
+                        fprintf( fPtr, "%3c", 'A' );
 //                    fprintf( fPtr, "%3c", '-' );
-                } else if(mtx[ r ][ c ] == bit2) {
-                    fprintf( fPtr, "%3c", 'B' );
-                } else if(mtx[ r ][ c ] == bit3) {
-                    fprintf( fPtr, "%3c", 'C' );
-                }
-            } else if(bitCentrale == bit2) {
-                if( mtx[ r ][ c ] == bit1) {
-                    fprintf( fPtr, "%3c", 'A' );
-                } else if(mtx[ r ][ c ] == bit2) {
-                    fprintf( fPtr, "%3c", 'B' );
+                    } else if(mtx2[ r ][ c ] == bit2) {
+                        fprintf( fPtr, "%3c", 'B' );
+                    } else if(mtx2[ r ][ c ] == bit3) {
+                        fprintf( fPtr, "%3c", 'C' );
+                    }
+                } else if(bitCentrale == bit2) {
+                    if( mtx2[ r ][ c ] == bit1) {
+                        fprintf( fPtr, "%3c", 'A' );
+                    } else if(mtx2[ r ][ c ] == bit2) {
+                        fprintf( fPtr, "%3c", 'B' );
 //                    fprintf( fPtr, "%3c", '-' );
-                } else if(mtx[ r ][ c ] == bit3) {
-                    fprintf( fPtr, "%3c", 'C' );
-                }
-            } else if(bitCentrale == bit3) {
-                if( mtx[ r ][ c ] == bit1) {
-                    fprintf( fPtr, "%3c", 'A' );
-                } else if(mtx[ r ][ c ] == bit2) {
-                    fprintf( fPtr, "%3c", 'B' );
-                } else if(mtx[ r ][ c ] == bit3) {
-                    fprintf( fPtr, "%3c", 'C' );
+                    } else if(mtx2[ r ][ c ] == bit3) {
+                        fprintf( fPtr, "%3c", 'C' );
+                    }
+                } else if(bitCentrale == bit3) {
+                    if( mtx2[ r ][ c ] == bit1) {
+                        fprintf( fPtr, "%3c", 'A' );
+                    } else if(mtx2[ r ][ c ] == bit2) {
+                        fprintf( fPtr, "%3c", 'B' );
+                    } else if(mtx2[ r ][ c ] == bit3) {
+                        fprintf( fPtr, "%3c", 'C' );
 //                    fprintf( fPtr, "%3c", '-' );
+                    }
                 }
             }
 
