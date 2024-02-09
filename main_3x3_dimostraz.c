@@ -1189,6 +1189,8 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
 
     endC:
 
+
+
     if(equivR != 0 && equivC != 0) {
 
 
@@ -1203,9 +1205,12 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
         printf("%d\n", intSign);
 
         return intSign; //VIETATA TRUE - NON CP
+    } else {
+        printf("---------------%d | %d\n", equivR, equivC);
+        return 0; //AMMESSA - VIETATA FALSE - CP
+
     }
 
-    return 0; //VIETATA FALSE - CP
 
 }
 
