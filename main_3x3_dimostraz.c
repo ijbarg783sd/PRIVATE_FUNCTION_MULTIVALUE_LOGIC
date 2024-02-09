@@ -721,7 +721,7 @@ int main() {
                                 /********************************************/
                                 int arrNumCount[] = {0, 0, 0};
                                 //                sumMtx(mtx, arrNumSum, arrNumCount, arrHowMany012, arrDistribution); //spostare in uno dei rami if seguenti per indagare le singole tipologie
-                                if (mtxType > 999) { //NON CP - VIETATA 3x3
+                                if (mtxType > 999 && mtxType < 1100) { //NON CP - VIETATA 3x3
 
                                     cont_ncp_3x3++; //0 - NON CP - vietata o monocromatica
                                     printMtxToFile(mtx, logPtr21, cont_MtxNoDuplicate, mtxType, bit1, bit2, bit3, bitCentrale,
@@ -1791,7 +1791,7 @@ void printMtxToFile( int mtx[ NUM ][ NUM ], FILE *fPtr, int cont_Mtx, int mtxTyp
 //    *countInterno = *countInterno + 1;
 
 //    fprintf( fPtr, "%d%d%d\n", countRC3bit, countStraight, count1for2);
-    fprintf( fPtr, "%d | N° %d | %d\n", idx, cont_Mtx, sign );
+    fprintf( fPtr, "N° %d | %d", cont_Mtx, sign );
 //    fprintf( fPtr, "%d | N° %d\nRC3:%d|STR:%d|1f2:%d\nCopR:%d | CopC:%d\n", idx, cont_Mtx, countRC3bit, countStraight, count1for2, countCoppiaRow, countCoppiaCol );
     if (mtxType == 10 || mtxType == 11 || mtxType == 12 || mtxType == 13) {
 //        fprintf( fPtr, "VIETATA - NON CP\n");
