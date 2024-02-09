@@ -899,12 +899,12 @@ int checkMtx(int mtx[ NUM ][ NUM ]) {
 //    if (checkMtx3x2(mtx) == 1) {
 //        return 13; //VIETATA TRUE - NON CP
 //    }
-    if (checkMtx2x2(mtx) == 1) {
-        return 11; //VIETATA TRUE - NON CP
-    }
-//    if (checkMtx3x3(mtx) == 1) {
-//        return 10; //VIETATA TRUE - NON CP
+//    if (checkMtx2x2(mtx) == 1) {
+//        return 11; //VIETATA TRUE - NON CP
 //    }
+    if (checkMtx3x3(mtx) == 1) {
+        return 10; //VIETATA TRUE - NON CP
+    }
 
     return 1; //CP TRUE - AMMESSA (NON VIETATA)
 
