@@ -914,6 +914,10 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ]) {
 
     int equivR = 0;
     int equivC = 0;
+    char strEquivR[3] = {'\0'};
+    char strEquivC[3] = {'\0'};
+    char sign[6] = {'\0'};
+    int intSign;
 
 //    if (checkMtxMono3x3(mtx) == 1) {
 //        return 2; //MONO 3x3 TRUE
@@ -924,55 +928,174 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ]) {
     for(int i = 0; i <= 2; i++) {
         if(mtx[0][i] == mtx[1][i]) { //relaz in prime 2 righe
             for(int j = 0; j <= 2; j++) {
-                if(mtx[1][j] == mtx[2][j] || mtx[0][j] == mtx[2][j]) { //relaz in 2a e 3a riga OPPURE in 1a e 3a riga
-                    equivR = 1;
+                if(mtx[1][j] == mtx[2][j]) { //relaz in 2a e 3a riga OPPURE in 1a e 3a riga
+                    if (i == 0 && j == 0) equivR = 10;
+                    if (i == 0 && j == 1) equivR = 11;
+                    if (i == 0 && j == 2) equivR = 12;
+                    if (i == 1 && j == 0) equivR = 13;
+                    if (i == 1 && j == 1) equivR = 14;
+                    if (i == 1 && j == 2) equivR = 15;
+                    if (i == 2 && j == 0) equivR = 16;
+                    if (i == 2 && j == 1) equivR = 17;
+                    if (i == 2 && j == 2) equivR = 18;
+                } else if (mtx[0][j] == mtx[2][j]) {
+                    if (i == 0 && j == 0) equivR = 20;
+                    if (i == 0 && j == 1) equivR = 21;
+                    if (i == 0 && j == 2) equivR = 22;
+                    if (i == 1 && j == 0) equivR = 23;
+                    if (i == 1 && j == 1) equivR = 24;
+                    if (i == 1 && j == 2) equivR = 25;
+                    if (i == 2 && j == 0) equivR = 26;
+                    if (i == 2 && j == 1) equivR = 27;
+                    if (i == 2 && j == 2) equivR = 28;
                 }
             }
         } else if(mtx[1][i] == mtx[2][i]) { //relaz in 2a e 3a riga
             for(int k = 0; k <= 2; k++) {
-                if(mtx[0][k] == mtx[1][k] || mtx[0][k] == mtx[2][k]) { //relaz in prime 2 righe OPPURE in 1a e 3a riga
-                    equivR = 1;
+                if(mtx[0][k] == mtx[1][k]) { //relaz in prime 2 righe OPPURE in 1a e 3a riga
+                    if (i == 0 && k == 0) equivR = 30;
+                    if (i == 0 && k == 1) equivR = 31;
+                    if (i == 0 && k == 2) equivR = 32;
+                    if (i == 1 && k == 0) equivR = 33;
+                    if (i == 1 && k == 1) equivR = 34;
+                    if (i == 1 && k == 2) equivR = 35;
+                    if (i == 2 && k == 0) equivR = 36;
+                    if (i == 2 && k == 1) equivR = 37;
+                    if (i == 2 && k == 2) equivR = 38;
+                } else if (mtx[0][k] == mtx[2][k]) {
+                    if (i == 0 && k == 0) equivR = 40;
+                    if (i == 0 && k == 1) equivR = 41;
+                    if (i == 0 && k == 2) equivR = 42;
+                    if (i == 1 && k == 0) equivR = 43;
+                    if (i == 1 && k == 1) equivR = 44;
+                    if (i == 1 && k == 2) equivR = 45;
+                    if (i == 2 && k == 0) equivR = 46;
+                    if (i == 2 && k == 1) equivR = 47;
+                    if (i == 2 && k == 2) equivR = 48;
                 }
             }
         }
         else if(mtx[0][i] == mtx[2][i]) { //relaz in 1a e 3a riga - RAMO PROBABILMENTE SUPERFLUO - NON CAMBIA RISULTATO
             for(int ku = 0; ku <= 2; ku++) {
-                if(mtx[0][ku] == mtx[1][ku] || mtx[1][ku] == mtx[2][ku]) { //relaz in prime 2 righe OPPURE in 2a e 3a riga
-                    equivR = 1;
+                if(mtx[0][ku] == mtx[1][ku]) { //relaz in prime 2 righe OPPURE in 2a e 3a riga
+                    if (i == 0 && ku == 0) equivR = 50;
+                    if (i == 0 && ku == 1) equivR = 51;
+                    if (i == 0 && ku == 2) equivR = 52;
+                    if (i == 1 && ku == 0) equivR = 53;
+                    if (i == 1 && ku == 1) equivR = 54;
+                    if (i == 1 && ku == 2) equivR = 55;
+                    if (i == 2 && ku == 0) equivR = 56;
+                    if (i == 2 && ku == 1) equivR = 57;
+                    if (i == 2 && ku == 2) equivR = 58;
+                } else if (mtx[1][ku] == mtx[2][ku]) {
+                    if (i == 0 && ku == 0) equivR = 60;
+                    if (i == 0 && ku == 1) equivR = 61;
+                    if (i == 0 && ku == 2) equivR = 62;
+                    if (i == 1 && ku == 0) equivR = 63;
+                    if (i == 1 && ku == 1) equivR = 64;
+                    if (i == 1 && ku == 2) equivR = 65;
+                    if (i == 2 && ku == 0) equivR = 66;
+                    if (i == 2 && ku == 1) equivR = 67;
+                    if (i == 2 && ku == 2) equivR = 68;
                 }
             }
         }
     } //end check row
 
     //check col
-    if(equivR == 1) {
+    if(equivR != 0) {
         for(int q = 0; q <= 2; q++) {
             if(mtx[q][0] == mtx[q][1]) { //relaz in prime 2 colonne
                 for(int w = 0; w <= 2; w++) {
-                    if(mtx[w][1] == mtx[w][2] || mtx[w][0] == mtx[w][2]) {
-                        equivC = 1;
+                    if(mtx[w][1] == mtx[w][2]) {
+                        if (q == 0 && w == 0) equivC = 10;
+                        if (q == 0 && w == 1) equivC = 11;
+                        if (q == 0 && w == 2) equivC = 12;
+                        if (q == 1 && w == 0) equivC = 13;
+                        if (q == 1 && w == 1) equivC = 14;
+                        if (q == 1 && w == 2) equivC = 15;
+                        if (q == 2 && w == 0) equivC = 16;
+                        if (q == 2 && w == 1) equivC = 17;
+                        if (q == 2 && w == 2) equivC = 18;
+                    } else if (mtx[w][0] == mtx[w][2]) {
+                        if (q == 0 && w == 0) equivC = 20;
+                        if (q == 0 && w == 1) equivC = 21;
+                        if (q == 0 && w == 2) equivC = 22;
+                        if (q == 1 && w == 0) equivC = 23;
+                        if (q == 1 && w == 1) equivC = 24;
+                        if (q == 1 && w == 2) equivC = 25;
+                        if (q == 2 && w == 0) equivC = 26;
+                        if (q == 2 && w == 1) equivC = 27;
+                        if (q == 2 && w == 2) equivC = 28;
                     }
                 }
             } else if(mtx[q][1] == mtx[q][2]) { //relaz in 2a e 3a colonna
                 for(int e = 0; e <= 2; e++) {
-                    if(mtx[e][0] == mtx[e][1] || mtx[e][0] == mtx[e][2]) {
-                        equivC = 1;
+                    if(mtx[e][0] == mtx[e][1]) {
+                        if (q == 0 && e == 0) equivC = 30;
+                        if (q == 0 && e == 1) equivC = 31;
+                        if (q == 0 && e == 2) equivC = 32;
+                        if (q == 1 && e == 0) equivC = 33;
+                        if (q == 1 && e == 1) equivC = 34;
+                        if (q == 1 && e == 2) equivC = 35;
+                        if (q == 2 && e == 0) equivC = 36;
+                        if (q == 2 && e == 1) equivC = 37;
+                        if (q == 2 && e == 2) equivC = 38;
+                    } else if (mtx[e][0] == mtx[e][2]) {
+                        if (q == 0 && e == 0) equivC = 40;
+                        if (q == 0 && e == 1) equivC = 41;
+                        if (q == 0 && e == 2) equivC = 42;
+                        if (q == 1 && e == 0) equivC = 43;
+                        if (q == 1 && e == 1) equivC = 44;
+                        if (q == 1 && e == 2) equivC = 45;
+                        if (q == 2 && e == 0) equivC = 46;
+                        if (q == 2 && e == 1) equivC = 47;
+                        if (q == 2 && e == 2) equivC = 48;
                     }
                 }
             }
             else if(mtx[q][0] == mtx[q][2]) { //relaz in 1a e 3a colonna - RAMO PROBABILMENTE SUPERFLUO - NON CAMBIA RISULTATO
-                for(int e = 0; e <= 2; e++) {
-                    if(mtx[e][0] == mtx[e][1] || mtx[e][1] == mtx[e][2]) {
-                        equivC = 1;
+                for(int ee = 0; ee <= 2; ee++) {
+                    if(mtx[ee][0] == mtx[ee][1]) {
+                        if (q == 0 && ee == 0) equivC = 50;
+                        if (q == 0 && ee == 1) equivC = 51;
+                        if (q == 0 && ee == 2) equivC = 52;
+                        if (q == 1 && ee == 0) equivC = 53;
+                        if (q == 1 && ee == 1) equivC = 54;
+                        if (q == 1 && ee == 2) equivC = 55;
+                        if (q == 2 && ee == 0) equivC = 56;
+                        if (q == 2 && ee == 1) equivC = 57;
+                        if (q == 2 && ee == 2) equivC = 58;
+                    } else if (mtx[ee][1] == mtx[ee][2]) {
+                        if (q == 0 && ee == 0) equivC = 60;
+                        if (q == 0 && ee == 1) equivC = 61;
+                        if (q == 0 && ee == 2) equivC = 62;
+                        if (q == 1 && ee == 0) equivC = 63;
+                        if (q == 1 && ee == 1) equivC = 64;
+                        if (q == 1 && ee == 2) equivC = 65;
+                        if (q == 2 && ee == 0) equivC = 66;
+                        if (q == 2 && ee == 1) equivC = 67;
+                        if (q == 2 && ee == 2) equivC = 68;
                     }
                 }
             }
         }
     } //end check col
 
-    if(equivR == 1 && equivC == 1) {
-        return 1; //VIETATA TRUE - NON CP
+    if(equivR != 0 && equivC != 0) {
 
+
+        sprintf(strEquivR, "%d", equivR);
+        sprintf(strEquivC, "%d", equivC);
+
+        strcpy(sign, strEquivR);
+        strcat(sign, strEquivC);
+
+//        printf("%s\n", sign);
+        intSign = atoi(sign);
+        printf("%d\n", intSign);
+
+        return intSign; //VIETATA TRUE - NON CP
     }
 
     return 0; //VIETATA FALSE - CP
@@ -1692,8 +1815,8 @@ void printMtxToFile( int mtx[ NUM ][ NUM ], FILE *fPtr, int cont_Mtx, int mtxTyp
 //            fprintf( fPtr, "%3d", mtx[ r ][ c ] ); //stampa il bit reale
             if (bitCentrale == bit1) {
                 if( mtx[ r ][ c ] == bit1) {
-//                    fprintf( fPtr, "%3c", 'A' );
-                    fprintf( fPtr, "%3c", '-' );
+                    fprintf( fPtr, "%3c", 'A' );
+//                    fprintf( fPtr, "%3c", '-' );
                 } else if(mtx[ r ][ c ] == bit2) {
                     fprintf( fPtr, "%3c", 'B' );
                 } else if(mtx[ r ][ c ] == bit3) {
@@ -1703,8 +1826,8 @@ void printMtxToFile( int mtx[ NUM ][ NUM ], FILE *fPtr, int cont_Mtx, int mtxTyp
                 if( mtx[ r ][ c ] == bit1) {
                     fprintf( fPtr, "%3c", 'A' );
                 } else if(mtx[ r ][ c ] == bit2) {
-//                    fprintf( fPtr, "%3c", 'B' );
-                    fprintf( fPtr, "%3c", '-' );
+                    fprintf( fPtr, "%3c", 'B' );
+//                    fprintf( fPtr, "%3c", '-' );
                 } else if(mtx[ r ][ c ] == bit3) {
                     fprintf( fPtr, "%3c", 'C' );
                 }
@@ -1714,8 +1837,8 @@ void printMtxToFile( int mtx[ NUM ][ NUM ], FILE *fPtr, int cont_Mtx, int mtxTyp
                 } else if(mtx[ r ][ c ] == bit2) {
                     fprintf( fPtr, "%3c", 'B' );
                 } else if(mtx[ r ][ c ] == bit3) {
-//                    fprintf( fPtr, "%3c", 'C' );
-                    fprintf( fPtr, "%3c", '-' );
+                    fprintf( fPtr, "%3c", 'C' );
+//                    fprintf( fPtr, "%3c", '-' );
                 }
             }
 
