@@ -9,8 +9,8 @@
 // PROTOTIPI
 void initMtx( int mtx[ NUM ][ NUM ] );
 void rowPerm( int mtx[ NUM ][ NUM ], int riga, int numPerm, int valori[3], int lenValori, int lenPerm );
-void printMtxToFile( int mtx[ NUM ][ NUM ], FILE *fPtr, int cont_Mtx, int mtxType, int bit1, int bit2, int bit3, int bitCentrale, int idx, int countRC3bit, int countStraight, int count1for2, int countCoppiaRow, int countCoppiaCol );
-int checkMtx(int mtx[ NUM ][ NUM ]);
+void printMtxToFile( int mtx[ NUM ][ NUM ], FILE *fPtr, int cont_Mtx, int mtxType, int bit1, int bit2, int bit3, int bitCentrale, int idx, int countRC3bit, int countStraight, int count1for2, int countCoppiaRow, int countCoppiaCol, int sign );
+int checkMtx(int mtx[ NUM ][ NUM ], int* arrSign2);
 int checkMtx3x3(int mtx[ NUM ][ NUM ]);
 int checkMtxMono3x3(int mtx[ NUM ][ NUM ]);
 int checkMono2x2C_AS(int mtx[ NUM ][ NUM ]); //CONTIGUE (4)
@@ -65,6 +65,8 @@ int main() {
     int arrNumSum[18] = {0};
     int arrHowMany012[3] = {0};
     int arrDistribution[999] = {0};
+    int arrSign2[10000] = {0};
+    int sign2 = 0;
 
 
     int bit1 = -1;
@@ -714,17 +716,17 @@ int main() {
 
                                 /********************************************/
                                 /********************************************/
-                                mtxType = checkMtx(mtx); //controllo MATRICI
+                                mtxType = checkMtx(mtx, arrSign2); //controllo MATRICI
                                 /********************************************/
                                 /********************************************/
                                 int arrNumCount[] = {0, 0, 0};
                                 //                sumMtx(mtx, arrNumSum, arrNumCount, arrHowMany012, arrDistribution); //spostare in uno dei rami if seguenti per indagare le singole tipologie
-                                if (mtxType == 10) { //NON CP - VIETATA 3x3
+                                if (mtxType > 999) { //NON CP - VIETATA 3x3
 
                                     cont_ncp_3x3++; //0 - NON CP - vietata o monocromatica
                                     printMtxToFile(mtx, logPtr21, cont_MtxNoDuplicate, mtxType, bit1, bit2, bit3, bitCentrale,
                                                    cont_ncp_3x3, countRC3bit, countStraight, count1for2, countCoppiaRow,
-                                                   countCoppiaCol);
+                                                   countCoppiaCol, mtxType);
 
 
                                     //                    if(arrHowMany012[0] == 2 && arrHowMany012[1] == 3 && arrHowMany012[2] == 4) {
@@ -735,7 +737,7 @@ int main() {
                                     cont_ncp_2x2++;
                                     printMtxToFile(mtx, logPtr22, cont_MtxNoDuplicate, mtxType, bit1, bit2, bit3, bitCentrale,
                                                    cont_ncp_2x2, countRC3bit, countStraight, count1for2, countCoppiaRow,
-                                                   countCoppiaCol);
+                                                   countCoppiaCol, sign2);
 
 
                                 } else if (mtxType == 12) { //NON CP - VIETATA 2x3
@@ -743,7 +745,7 @@ int main() {
                                     cont_ncp_2x3++;
                                     printMtxToFile(mtx, logPtr23, cont_MtxNoDuplicate, mtxType, bit1, bit2, bit3, bitCentrale,
                                                    cont_ncp_2x2, countRC3bit, countStraight, count1for2, countCoppiaRow,
-                                                   countCoppiaCol);
+                                                   countCoppiaCol, sign2);
 
                                 } else if (mtxType == 13) { //NON CP - VIETATA 3x2
 
@@ -751,7 +753,7 @@ int main() {
 
                                     printMtxToFile(mtx, logPtr24, cont_MtxNoDuplicate, mtxType, bit1, bit2, bit3, bitCentrale,
                                                    cont_ncp_2x2, countRC3bit, countStraight, count1for2, countCoppiaRow,
-                                                   countCoppiaCol);
+                                                   countCoppiaCol, sign2);
 
                                 } else { //CP - ammessa (perchè NON vietata)
 
@@ -761,7 +763,7 @@ int main() {
 
                                     //                        if(sumMtx(mtx, arrNumSum) == 15) {
                                     printMtxToFile(mtx, logPtr3, cont_Mtx, mtxType, bit1, bit2, bit3, bitCentrale, idx3,
-                                                   countRC3bit, countStraight, count1for2, countCoppiaRow, countCoppiaCol);
+                                                   countRC3bit, countStraight, count1for2, countCoppiaRow, countCoppiaCol, sign2);
                                     //
                                     //                        }
 
@@ -774,7 +776,7 @@ int main() {
                                 }
                                 //stampa TUTTE LE MATRICI
                                 printMtxToFile(mtx, logPtr1, cont_MtxNoDuplicate, mtxType, bit1, bit2, bit3, bitCentrale, idx,
-                                               countRC3bit, countStraight, count1for2, countCoppiaRow, countCoppiaCol);
+                                               countRC3bit, countStraight, count1for2, countCoppiaRow, countCoppiaCol, sign2);
 
                                 //                    }
                                 //                    } //PATTERN 2 DIAGONALE/DRITTO
@@ -892,7 +894,7 @@ int setBit3(int mtx[ NUM ][ NUM ], int bit1, int bit2) {
 }
 
 
-int checkMtx(int mtx[ NUM ][ NUM ]) {
+int checkMtx(int mtx[ NUM ][ NUM ], int* arrSign2) {
 //    if (checkMtx2x3(mtx) == 1) {
 //        return 12; //VIETATA TRUE - NON CP
 //    }
@@ -902,8 +904,14 @@ int checkMtx(int mtx[ NUM ][ NUM ]) {
 //    if (checkMtx2x2(mtx) == 1) {
 //        return 11; //VIETATA TRUE - NON CP
 //    }
-    if (checkMtx3x3(mtx) == 1) {
-        return 10; //VIETATA TRUE - NON CP
+    if (checkMtx3x3(mtx) != 0) {
+
+        arrSign2[checkMtx3x3(mtx)]++;
+
+        if(arrSign2[checkMtx3x3(mtx)] != 1) return 1;
+
+        return checkMtx3x3(mtx); //VIETATA TRUE - NON CP
+
     }
 
     return 1; //CP TRUE - AMMESSA (NON VIETATA)
@@ -1778,14 +1786,15 @@ int concat(int x, int y, int z){
     return a;
 }
 
-void printMtxToFile( int mtx[ NUM ][ NUM ], FILE *fPtr, int cont_Mtx, int mtxType, int bit1, int bit2, int bit3, int bitCentrale, int idx, int countRC3bit, int countStraight, int count1for2, int countCoppiaRow, int countCoppiaCol ) {
+void printMtxToFile( int mtx[ NUM ][ NUM ], FILE *fPtr, int cont_Mtx, int mtxType, int bit1, int bit2, int bit3, int bitCentrale, int idx, int countRC3bit, int countStraight, int count1for2, int countCoppiaRow, int countCoppiaCol, int sign ) {
 
 //    *countInterno = *countInterno + 1;
 
 //    fprintf( fPtr, "%d%d%d\n", countRC3bit, countStraight, count1for2);
-    fprintf( fPtr, "%d | N° %d\nRC3:%d|STR:%d|1f2:%d\nCopR:%d | CopC:%d\n", idx, cont_Mtx, countRC3bit, countStraight, count1for2, countCoppiaRow, countCoppiaCol );
+    fprintf( fPtr, "%d | N° %d | %d\n", idx, cont_Mtx, sign );
+//    fprintf( fPtr, "%d | N° %d\nRC3:%d|STR:%d|1f2:%d\nCopR:%d | CopC:%d\n", idx, cont_Mtx, countRC3bit, countStraight, count1for2, countCoppiaRow, countCoppiaCol );
     if (mtxType == 10 || mtxType == 11 || mtxType == 12 || mtxType == 13) {
-        fprintf( fPtr, "VIETATA - NON CP\n");
+//        fprintf( fPtr, "VIETATA - NON CP\n");
     } else {
 //        fprintf( fPtr, "AMMESSA - CP\n");
     }
