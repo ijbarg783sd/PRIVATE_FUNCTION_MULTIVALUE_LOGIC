@@ -954,14 +954,14 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
 
     //check row
     for(int i = 0; i <= 2; i++) {
-        if (contR >= 1) goto end;
+        if (contR >= 1) goto endR;
         if(mtx[0][i] == mtx[1][i]) { //relaz in prime 2 righe
             contR++;
             mtx2[0][i] = mtx[0][i];
             mtx2[1][i] = mtx[1][i];
             for(int j = 0; j <= 2; j++) {
                 if(mtx[1][j] == mtx[2][j]) { //relaz in 2a e 3a riga OPPURE in 1a e 3a riga
-                    if (contR >= 2) goto end;
+                    if (contR >= 2) goto endR;
                     contR++;
                     mtx2[1][j] = mtx[1][j];
                     mtx2[2][j] = mtx[2][j];
@@ -975,7 +975,7 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
                     if (i == 2 && j == 1) equivR = 17;
                     if (i == 2 && j == 2) equivR = 18;
                 } else if (mtx[0][j] == mtx[2][j]) {
-                    if (contR >= 2) goto end;
+                    if (contR >= 2) goto endR;
                     contR++;
                     mtx2[0][j] = mtx[0][j];
                     mtx2[2][j] = mtx[2][j];
@@ -996,7 +996,7 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
             mtx2[2][i] = mtx[2][i];
             for(int k = 0; k <= 2; k++) {
                 if(mtx[0][k] == mtx[1][k]) { //relaz in prime 2 righe OPPURE in 1a e 3a riga
-                    if (contR >= 2) goto end;
+                    if (contR >= 2) goto endR;
                     contR++;
                     mtx2[0][k] = mtx[0][k];
                     mtx2[1][k] = mtx[1][k];
@@ -1010,7 +1010,7 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
                     if (i == 2 && k == 1) equivR = 37;
                     if (i == 2 && k == 2) equivR = 38;
                 } else if (mtx[0][k] == mtx[2][k]) {
-                    if (contR >= 2) goto end;
+                    if (contR >= 2) goto endR;
                     contR++;
                     mtx2[0][k] = mtx[0][k];
                     mtx2[2][k] = mtx[2][k];
@@ -1032,7 +1032,7 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
             mtx2[2][i] = mtx[2][i];
             for(int ku = 0; ku <= 2; ku++) {
                 if(mtx[0][ku] == mtx[1][ku]) { //relaz in prime 2 righe OPPURE in 2a e 3a riga
-                    if (contR >= 2) goto end;
+                    if (contR >= 2) goto endR;
                     contR++;
                     mtx2[0][ku] = mtx[0][ku];
                     mtx2[1][ku] = mtx[1][ku];
@@ -1046,7 +1046,7 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
                     if (i == 2 && ku == 1) equivR = 57;
                     if (i == 2 && ku == 2) equivR = 58;
                 } else if (mtx[1][ku] == mtx[2][ku]) {
-                    if (contR >= 2) goto end;
+                    if (contR >= 2) goto endR;
                     contR++;
                     mtx2[1][ku] = mtx[1][ku];
                     mtx2[2][ku] = mtx[2][ku];
@@ -1064,17 +1064,19 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
         }
     } //end check row
 
+    endR:
+
     //check col
     if(equivR != 0) {
         for(int q = 0; q <= 2; q++) {
-            if (contC >= 1) goto end;
+            if (contC >= 1) goto endC;
             if(mtx[q][0] == mtx[q][1]) { //relaz in prime 2 colonne
                 contC++;
                 mtx2[q][0] = mtx[q][0];
                 mtx2[q][1] = mtx[q][1];
                 for(int w = 0; w <= 2; w++) {
                     if(mtx[w][1] == mtx[w][2]) {
-                        if (contC >= 2) goto end;
+                        if (contC >= 2) goto endC;
                         contC++;
                         mtx2[w][1] = mtx[w][1];
                         mtx2[w][2] = mtx[w][2];
@@ -1088,7 +1090,7 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
                         if (q == 2 && w == 1) equivC = 17;
                         if (q == 2 && w == 2) equivC = 18;
                     } else if (mtx[w][0] == mtx[w][2]) {
-                        if (contC >= 2) goto end;
+                        if (contC >= 2) goto endC;
                         contC++;
                         mtx2[w][0] = mtx[w][0];
                         mtx2[w][2] = mtx[w][2];
@@ -1109,7 +1111,7 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
                 mtx2[q][2] = mtx[q][2];
                 for(int e = 0; e <= 2; e++) {
                     if(mtx[e][0] == mtx[e][1]) {
-                        if (contC >= 2) goto end;
+                        if (contC >= 2) goto endC;
                         contC++;
                         mtx2[e][0] = mtx[e][0];
                         mtx2[e][1] = mtx[e][1];
@@ -1123,7 +1125,7 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
                         if (q == 2 && e == 1) equivC = 37;
                         if (q == 2 && e == 2) equivC = 38;
                     } else if (mtx[e][0] == mtx[e][2]) {
-                        if (contC >= 2) goto end;
+                        if (contC >= 2) goto endC;
                         contC++;
                         mtx2[e][0] = mtx[e][0];
                         mtx2[e][2] = mtx[e][2];
@@ -1145,7 +1147,7 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
                 mtx2[q][2] = mtx[q][2];
                 for(int ee = 0; ee <= 2; ee++) {
                     if(mtx[ee][0] == mtx[ee][1]) {
-                        if (contC >= 2) goto end;
+                        if (contC >= 2) goto endC;
                         contC++;
                         mtx2[ee][0] = mtx[ee][0];
                         mtx2[ee][1] = mtx[ee][1];
@@ -1159,7 +1161,7 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
                         if (q == 2 && ee == 1) equivC = 57;
                         if (q == 2 && ee == 2) equivC = 58;
                     } else if (mtx[ee][1] == mtx[ee][2]) {
-                        if (contC >= 2) goto end;
+                        if (contC >= 2) goto endC;
                         contC++;
                         mtx2[ee][1] = mtx[ee][1];
                         mtx2[ee][2] = mtx[ee][2];
@@ -1178,7 +1180,7 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
         }
     } //end check col
 
-    end:
+    endC:
 
     if(equivR != 0 && equivC != 0) {
 
