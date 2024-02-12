@@ -724,7 +724,7 @@ int main() {
                                 /********************************************/
                                 int arrNumCount[] = {0, 0, 0};
                                 //                sumMtx(mtx, arrNumSum, arrNumCount, arrHowMany012, arrDistribution); //spostare in uno dei rami if seguenti per indagare le singole tipologie
-                                if (mtxType > 999 && mtxType < 1100) { //NON CP - VIETATA 3x3
+                                if (mtxType > 999 && mtxType < 11000) { //NON CP - VIETATA 3x3
 
                                     cont_ncp_3x3++; //0 - NON CP - vietata o monocromatica
                                     printMtxToFile(mtx, mtx2, logPtr21, cont_MtxNoDuplicate, mtxType, bit1, bit2, bit3, bitCentrale,
@@ -865,7 +865,7 @@ void initMtx2( int mtx[ NUM ][ NUM ] ) {
 
     for ( r = 0; r < NUM; r++ ) {
         for ( c = 0; c < NUM; c++ ) {
-            mtx[ r ][ c ] = 10;
+            mtx[ r ][ c ] = 13;
         }
     }
 
@@ -960,14 +960,14 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
         if(mtx[0][i] == mtx[1][i]) { //relaz in prime 2 righe
             if (R1 == 1 && R2 == 1) goto endR;
             R1 = 1;
-            mtx2[0][i] = mtx[0][i] + 3;
-            mtx2[1][i] = mtx[1][i] + 3;
             for(int j = 0; j <= 2; j++) {
                 if(mtx[1][j] == mtx[2][j]) { //relaz in 2a e 3a riga OPPURE in 1a e 3a riga
                     if (R1 == 1 && R2 == 1) goto endR;
                     R2 = 1;
-                    mtx2[1][j] = mtx[1][j] + 3;
-                    mtx2[2][j] = mtx[2][j] + 3;
+                    mtx2[0][i] = mtx[0][i] + 10;
+                    mtx2[1][i] = mtx[1][i] + 10;
+                    mtx2[1][j] = mtx[1][j] + 10;
+                    mtx2[2][j] = mtx[2][j] + 10;
                     if (i == 0 && j == 0) equivR = 10;
                     if (i == 0 && j == 1) equivR = 11;
                     if (i == 0 && j == 2) equivR = 12;
@@ -980,8 +980,10 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
                 } else if (mtx[0][j] == mtx[2][j]) {
                     if (R1 == 1 && R2 == 1) goto endR;
                     R2 = 1;
-                    mtx2[0][j] = mtx[0][j] + 3;
-                    mtx2[2][j] = mtx[2][j] + 3;
+                    mtx2[0][i] = mtx[0][i] + 10;
+                    mtx2[1][i] = mtx[1][i] + 10;
+                    mtx2[0][j] = mtx[0][j] + 10;
+                    mtx2[2][j] = mtx[2][j] + 10;
                     if (i == 0 && j == 0) equivR = 20;
                     if (i == 0 && j == 1) equivR = 21;
                     if (i == 0 && j == 2) equivR = 22;
@@ -996,14 +998,14 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
         } else if(mtx[1][i] == mtx[2][i]) { //relaz in 2a e 3a riga
             if (R1 == 1 && R2 == 1) goto endR;
             R1 = 1;
-            mtx2[1][i] = mtx[1][i] + 3;
-            mtx2[2][i] = mtx[2][i] + 3;
             for(int k = 0; k <= 2; k++) {
                 if(mtx[0][k] == mtx[1][k]) { //relaz in prime 2 righe OPPURE in 1a e 3a riga
                     if (R1 == 1 && R2 == 1) goto endR;
                     R2 = 1;
-                    mtx2[0][k] = mtx[0][k] + 3;
-                    mtx2[1][k] = mtx[1][k] + 3;
+                    mtx2[1][i] = mtx[1][i] + 10;
+                    mtx2[2][i] = mtx[2][i] + 10;
+                    mtx2[0][k] = mtx[0][k] + 10;
+                    mtx2[1][k] = mtx[1][k] + 10;
                     if (i == 0 && k == 0) equivR = 30;
                     if (i == 0 && k == 1) equivR = 31;
                     if (i == 0 && k == 2) equivR = 32;
@@ -1016,8 +1018,10 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
                 } else if (mtx[0][k] == mtx[2][k]) {
                     if (R1 == 1 && R2 == 1) goto endR;
                     R2 = 1;
-                    mtx2[0][k] = mtx[0][k] + 3;
-                    mtx2[2][k] = mtx[2][k] + 3;
+                    mtx2[1][i] = mtx[1][i] + 10;
+                    mtx2[2][i] = mtx[2][i] + 10;
+                    mtx2[0][k] = mtx[0][k] + 10;
+                    mtx2[2][k] = mtx[2][k] + 10;
                     if (i == 0 && k == 0) equivR = 40;
                     if (i == 0 && k == 1) equivR = 41;
                     if (i == 0 && k == 2) equivR = 42;
@@ -1033,14 +1037,15 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
         else if(mtx[0][i] == mtx[2][i]) { //relaz in 1a e 3a riga - RAMO PROBABILMENTE SUPERFLUO - NON CAMBIA RISULTATO
             if (R1 == 1 && R2 == 1) goto endR;
             R1 = 1;
-            mtx2[0][i] = mtx[0][i] + 3;
-            mtx2[2][i] = mtx[2][i] + 3;
+
             for(int ku = 0; ku <= 2; ku++) {
                 if(mtx[0][ku] == mtx[1][ku]) { //relaz in prime 2 righe OPPURE in 2a e 3a riga
                     if (R1 == 1 && R2 == 1) goto endR;
                     R2 = 1;
-                    mtx2[0][ku] = mtx[0][ku] + 3;
-                    mtx2[1][ku] = mtx[1][ku] + 3;
+                    mtx2[0][i] = mtx[0][i] + 10;
+                    mtx2[2][i] = mtx[2][i] + 10;
+                    mtx2[0][ku] = mtx[0][ku] + 10;
+                    mtx2[1][ku] = mtx[1][ku] + 10;
                     if (i == 0 && ku == 0) equivR = 50;
                     if (i == 0 && ku == 1) equivR = 51;
                     if (i == 0 && ku == 2) equivR = 52;
@@ -1053,8 +1058,10 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
                 } else if (mtx[1][ku] == mtx[2][ku]) {
                     if (R1 == 1 && R2 == 1) goto endR;
                     R2 = 1;
-                    mtx2[1][ku] = mtx[1][ku] + 3;
-                    mtx2[2][ku] = mtx[2][ku] + 3;
+                    mtx2[0][i] = mtx[0][i] + 10;
+                    mtx2[2][i] = mtx[2][i] + 10;
+                    mtx2[1][ku] = mtx[1][ku] + 10;
+                    mtx2[2][ku] = mtx[2][ku] + 10;
                     if (i == 0 && ku == 0) equivR = 60;
                     if (i == 0 && ku == 1) equivR = 61;
                     if (i == 0 && ku == 2) equivR = 62;
@@ -1077,14 +1084,15 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
             if(mtx[q][0] == mtx[q][1]) { //relaz in prime 2 colonne
                 if (C1 == 1 && C2 == 1) goto endC;
                 C1 = 1;
-                mtx2[q][0] = mtx2[q][0] + 6;
-                mtx2[q][1] = mtx2[q][1] + 6;
+
                 for(int w = 0; w <= 2; w++) {
                     if(mtx[w][1] == mtx[w][2]) {
                         if (C1 == 1 && C2 == 1) goto endC;
                         C2 = 1;
-                        mtx2[w][1] = mtx2[w][1] + 6;
-                        mtx2[w][2] = mtx2[w][2] + 6;
+                        mtx2[q][0] = mtx2[q][0] + 100;
+                        mtx2[q][1] = mtx2[q][1] + 100;
+                        mtx2[w][1] = mtx2[w][1] + 100;
+                        mtx2[w][2] = mtx2[w][2] + 100;
                         if (q == 0 && w == 0) equivC = 10;
                         if (q == 0 && w == 1) equivC = 11;
                         if (q == 0 && w == 2) equivC = 12;
@@ -1097,8 +1105,10 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
                     } else if (mtx[w][0] == mtx[w][2]) {
                         if (C1 == 1 && C2 == 1) goto endC;
                         C2 = 1;
-                        mtx2[w][0] = mtx2[w][0] + 6;
-                        mtx2[w][2] = mtx2[w][2] + 6;
+                        mtx2[q][0] = mtx2[q][0] + 100;
+                        mtx2[q][1] = mtx2[q][1] + 100;
+                        mtx2[w][0] = mtx2[w][0] + 100;
+                        mtx2[w][2] = mtx2[w][2] + 100;
                         if (q == 0 && w == 0) equivC = 20;
                         if (q == 0 && w == 1) equivC = 21;
                         if (q == 0 && w == 2) equivC = 22;
@@ -1113,14 +1123,14 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
             } else if(mtx[q][1] == mtx[q][2]) { //relaz in 2a e 3a colonna
                 if (C1 == 1 && C2 == 1) goto endC;
                 C1 = 1;
-                mtx2[q][1] = mtx2[q][1] + 6;
-                mtx2[q][2] = mtx2[q][2] + 6;
                 for(int e = 0; e <= 2; e++) {
                     if(mtx[e][0] == mtx[e][1]) {
                         if (C1 == 1 && C2 == 1) goto endC;
                         C2 = 1;
-                        mtx2[e][0] = mtx2[e][0] + 6;
-                        mtx2[e][1] = mtx2[e][1] + 6;
+                        mtx2[q][1] = mtx2[q][1] + 100;
+                        mtx2[q][2] = mtx2[q][2] + 100;
+                        mtx2[e][0] = mtx2[e][0] + 100;
+                        mtx2[e][1] = mtx2[e][1] + 100;
                         if (q == 0 && e == 0) equivC = 30;
                         if (q == 0 && e == 1) equivC = 31;
                         if (q == 0 && e == 2) equivC = 32;
@@ -1133,8 +1143,10 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
                     } else if (mtx[e][0] == mtx[e][2]) {
                         if (C1 == 1 && C2 == 1) goto endC;
                         C2 = 1;
-                        mtx2[e][0] = mtx2[e][0] + 6;
-                        mtx2[e][2] = mtx2[e][2] + 6;
+                        mtx2[q][1] = mtx2[q][1] + 100;
+                        mtx2[q][2] = mtx2[q][2] + 100;
+                        mtx2[e][0] = mtx2[e][0] + 100;
+                        mtx2[e][2] = mtx2[e][2] + 100;
                         if (q == 0 && e == 0) equivC = 40;
                         if (q == 0 && e == 1) equivC = 41;
                         if (q == 0 && e == 2) equivC = 42;
@@ -1150,14 +1162,14 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
             else if(mtx[q][0] == mtx[q][2]) { //relaz in 1a e 3a colonna - RAMO PROBABILMENTE SUPERFLUO - NON CAMBIA RISULTATO
                 if (C1 == 1 && C2 == 1) goto endC;
                 C1 = 1;
-                mtx2[q][0] = mtx2[q][0] + 6;
-                mtx2[q][2] = mtx2[q][2] + 6;
                 for(int ee = 0; ee <= 2; ee++) {
                     if(mtx[ee][0] == mtx[ee][1]) {
                         if (C1 == 1 && C2 == 1) goto endC;
                         C2 = 1;
-                        mtx2[ee][0] = mtx2[ee][0] + 6;
-                        mtx2[ee][1] = mtx2[ee][1] + 6;
+                        mtx2[q][0] = mtx2[q][0] + 100;
+                        mtx2[q][2] = mtx2[q][2] + 100;
+                        mtx2[ee][0] = mtx2[ee][0] + 100;
+                        mtx2[ee][1] = mtx2[ee][1] + 100;
                         if (q == 0 && ee == 0) equivC = 50;
                         if (q == 0 && ee == 1) equivC = 51;
                         if (q == 0 && ee == 2) equivC = 52;
@@ -1170,8 +1182,10 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
                     } else if (mtx[ee][1] == mtx[ee][2]) {
                         if (C1 == 1 && C2 == 1) goto endC;
                         C2 = 1;
-                        mtx2[ee][1] = mtx2[ee][1] + 6;
-                        mtx2[ee][2] = mtx2[ee][2] + 6;
+                        mtx2[q][0] = mtx2[q][0] + 100;
+                        mtx2[q][2] = mtx2[q][2] + 100;
+                        mtx2[ee][1] = mtx2[ee][1] + 100;
+                        mtx2[ee][2] = mtx2[ee][2] + 100;
                         if (q == 0 && ee == 0) equivC = 60;
                         if (q == 0 && ee == 1) equivC = 61;
                         if (q == 0 && ee == 2) equivC = 62;
@@ -1190,6 +1204,11 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
     endC:
 
 
+    printf("%d | %d | %d\n%d | %d | %d\n%d | %d | %d\n\n",
+           mtx2[0][0], mtx2[0][1], mtx2[0][2],
+           mtx2[1][0], mtx2[1][1], mtx2[1][2],
+           mtx2[2][0], mtx2[2][1], mtx2[2][2]);
+
 
     if(equivR != 0 && equivC != 0) {
 
@@ -1202,7 +1221,7 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
 
 //        printf("%s\n", sign);
         intSign = atoi(sign);
-        printf("%d\n", intSign);
+//        printf("%d\n", intSign);
 
         return intSign; //VIETATA TRUE - NON CP
     } else {
@@ -1926,7 +1945,7 @@ void printMtxToFile( int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ], FILE *fPtr, 
 
         for ( c = 0; c < NUM; c++ ) {
 //            fprintf( fPtr, "%3d", mtx2[ r ][ c ] ); //stampa il bit reale
-            if (mtx2[ r ][ c ] == 10) {
+            if (mtx2[ r ][ c ] == 13) {
                 fprintf( fPtr, "%3c", '-' );
             } else if (mtx2[ r ][ c ] == 3) {
                 fprintf( fPtr, "%3c", 'X' );
@@ -1939,6 +1958,14 @@ void printMtxToFile( int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ], FILE *fPtr, 
             } else if (mtx2[ r ][ c ] == 7) {
                 fprintf( fPtr, "%3c", 'Y' );
             } else if (mtx2[ r ][ c ] == 8) {
+                fprintf( fPtr, "%3c", 'Y' );
+            } else if (mtx2[ r ][ c ] == 9) {
+                fprintf( fPtr, "%3c", 'Z' );
+            } else if (mtx2[ r ][ c ] == 10) {
+                fprintf( fPtr, "%3c", 'Z' );
+            } else if (mtx2[ r ][ c ] == 11) {
+                fprintf( fPtr, "%3c", 'Z' );
+            } else if (mtx2[ r ][ c ] == 18) {
                 fprintf( fPtr, "%3c", 'Y' );
             }
 
