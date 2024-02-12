@@ -1089,6 +1089,10 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
                     if(mtx[w][1] == mtx[w][2]) {
                         if (C1 == 1 && C2 == 1) goto endC;
                         C2 = 1;
+                        if (mtx2[q][0] == 13) mtx2[q][0] += mtx[q][0] + 1;
+                        if (mtx2[q][1] == 13) mtx2[q][1] += mtx[q][1] + 1;
+                        if (mtx2[w][1] == 13) mtx2[w][1] += mtx[w][1] + 1;
+                        if (mtx2[w][2] == 13) mtx2[w][2] += mtx[w][2] + 1;
                         mtx2[q][0] = mtx2[q][0] + 100;
                         mtx2[q][1] = mtx2[q][1] + 100;
                         mtx2[w][1] = mtx2[w][1] + 100;
@@ -1105,6 +1109,10 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
                     } else if (mtx[w][0] == mtx[w][2]) {
                         if (C1 == 1 && C2 == 1) goto endC;
                         C2 = 1;
+                        if (mtx2[q][0] == 13) mtx2[q][0] += mtx[q][0] + 1;
+                        if (mtx2[q][1] == 13) mtx2[q][1] += mtx[q][1] + 1;
+                        if (mtx2[w][0] == 13) mtx2[w][0] += mtx[w][0] + 1;
+                        if (mtx2[w][2] == 13) mtx2[w][2] += mtx[w][2] + 1;
                         mtx2[q][0] = mtx2[q][0] + 100;
                         mtx2[q][1] = mtx2[q][1] + 100;
                         mtx2[w][0] = mtx2[w][0] + 100;
@@ -1127,6 +1135,10 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
                     if(mtx[e][0] == mtx[e][1]) {
                         if (C1 == 1 && C2 == 1) goto endC;
                         C2 = 1;
+                        if (mtx2[q][1] == 13) mtx2[q][1] += mtx[q][1] + 1;
+                        if (mtx2[q][2] == 13) mtx2[q][2] += mtx[q][2] + 1;
+                        if (mtx2[e][0] == 13) mtx2[e][0] += mtx[e][0] + 1;
+                        if (mtx2[e][1] == 13) mtx2[e][1] += mtx[e][1] + 1;
                         mtx2[q][1] = mtx2[q][1] + 100;
                         mtx2[q][2] = mtx2[q][2] + 100;
                         mtx2[e][0] = mtx2[e][0] + 100;
@@ -1143,6 +1155,10 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
                     } else if (mtx[e][0] == mtx[e][2]) {
                         if (C1 == 1 && C2 == 1) goto endC;
                         C2 = 1;
+                        if (mtx2[q][1] == 13) mtx2[q][1] += mtx[q][1] + 1;
+                        if (mtx2[q][2] == 13) mtx2[q][2] += mtx[q][2] + 1;
+                        if (mtx2[e][0] == 13) mtx2[e][0] += mtx[e][0] + 1;
+                        if (mtx2[e][2] == 13) mtx2[e][2] += mtx[e][2] + 1;
                         mtx2[q][1] = mtx2[q][1] + 100;
                         mtx2[q][2] = mtx2[q][2] + 100;
                         mtx2[e][0] = mtx2[e][0] + 100;
@@ -1166,6 +1182,10 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
                     if(mtx[ee][0] == mtx[ee][1]) {
                         if (C1 == 1 && C2 == 1) goto endC;
                         C2 = 1;
+                        if (mtx2[q][0] == 13) mtx2[q][0] += mtx[q][0] + 1;
+                        if (mtx2[q][2] == 13) mtx2[q][2] += mtx[q][2] + 1;
+                        if (mtx2[ee][0] == 13) mtx2[ee][0] += mtx[ee][0] + 1;
+                        if (mtx2[ee][1] == 13) mtx2[ee][1] += mtx[ee][1] + 1;
                         mtx2[q][0] = mtx2[q][0] + 100;
                         mtx2[q][2] = mtx2[q][2] + 100;
                         mtx2[ee][0] = mtx2[ee][0] + 100;
@@ -1182,6 +1202,10 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
                     } else if (mtx[ee][1] == mtx[ee][2]) {
                         if (C1 == 1 && C2 == 1) goto endC;
                         C2 = 1;
+                        if (mtx2[q][0] == 13) mtx2[q][0] += mtx[q][0] + 1;
+                        if (mtx2[q][2] == 13) mtx2[q][2] += mtx[q][2] + 1;
+                        if (mtx2[ee][1] == 13) mtx2[ee][1] += mtx[ee][1] + 1;
+                        if (mtx2[ee][2] == 13) mtx2[ee][2] += mtx[ee][2] + 1;
                         mtx2[q][0] = mtx2[q][0] + 100;
                         mtx2[q][2] = mtx2[q][2] + 100;
                         mtx2[ee][1] = mtx2[ee][1] + 100;
@@ -1204,10 +1228,10 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
     endC:
 
 
-//    printf("%d | %d | %d\n%d | %d | %d\n%d | %d | %d\n\n",
-//           mtx2[0][0], mtx2[0][1], mtx2[0][2],
-//           mtx2[1][0], mtx2[1][1], mtx2[1][2],
-//           mtx2[2][0], mtx2[2][1], mtx2[2][2]);
+    printf("%d\n%d\n%d\n%d\n%d\n%d\n%d\n%d\n%d\n",
+           mtx2[0][0], mtx2[0][1], mtx2[0][2],
+           mtx2[1][0], mtx2[1][1], mtx2[1][2],
+           mtx2[2][0], mtx2[2][1], mtx2[2][2]);
 
 
     if(equivR != 0 && equivC != 0) {
@@ -1946,23 +1970,50 @@ void printMtxToFile( int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ], FILE *fPtr, 
         for ( c = 0; c < NUM; c++ ) {
 //            fprintf( fPtr, "%3d", mtx2[ r ][ c ] ); //stampa il bit reale
 
+//            if (mtx2[ r ][ c ] == 13) {
+//                fprintf( fPtr, "%3c", '-' );
+//            } else if (mtx2[ r ][ c ] == 10) {
+//                fprintf(fPtr, "%2c%c", 'X', '1');
+//            } else if (mtx2[ r ][ c ] == 11) {
+//                fprintf( fPtr, "%2c%c", 'X', '2' );
+//            } else if (mtx2[ r ][ c ] == 12) {
+//                fprintf( fPtr, "%2c%c", 'X', '3' );
+//            } else if (mtx2[ r ][ c ] == 114 || mtx2[ r ][ c ] == 214) {
+//                fprintf( fPtr, "%2c%c", 'Y', '1' );
+//            } else if (mtx2[ r ][ c ] == 115 || mtx2[ r ][ c ] == 215) {
+//                fprintf( fPtr, "%2c%c", 'Y', '2' );
+//            } else if (mtx2[ r ][ c ] == 116 || mtx2[ r ][ c ] == 216) {
+//                fprintf( fPtr, "%2c%c", 'Y', '3' );
+//            } else if (mtx2[ r ][ c ] == 110 || mtx2[ r ][ c ] == 210) {
+//                fprintf( fPtr, "%2c%c", 'Z', '1' );
+//            } else if (mtx2[ r ][ c ] == 111 || mtx2[ r ][ c ] == 211) {
+//                fprintf( fPtr, "%2c%c", 'Z', '2' );
+//            } else if (mtx2[ r ][ c ] == 112 || mtx2[ r ][ c ] == 212) {
+//                fprintf( fPtr, "%2c%c", 'Z', '3' );
+//            }
+
             if (mtx2[ r ][ c ] == 13) {
                 fprintf( fPtr, "%3c", '-' );
             } else if (mtx2[ r ][ c ] == 10) {
-                fprintf(fPtr, "%2c%c", 'X', '1');
+                fprintf( fPtr, "%3c", 'A');
             } else if (mtx2[ r ][ c ] == 11) {
-                fprintf( fPtr, "%2c%c", 'X', '2' );
+                fprintf( fPtr, "%3c", 'B' );
             } else if (mtx2[ r ][ c ] == 12) {
-                fprintf( fPtr, "%2c%c", 'X', '3' );
-            } else if (mtx2[ r ][ c ] == 113 || mtx2[ r ][ c ] == 213) {
-                fprintf( fPtr, "%3c", 'Y' );
+                fprintf( fPtr, "%3c", 'C' );
+            } else if (mtx2[ r ][ c ] == 114 || mtx2[ r ][ c ] == 214) {
+                fprintf( fPtr, "%3c", 'A' );
+            } else if (mtx2[ r ][ c ] == 115 || mtx2[ r ][ c ] == 215) {
+                fprintf( fPtr, "%3c", 'B' );
+            } else if (mtx2[ r ][ c ] == 116 || mtx2[ r ][ c ] == 216) {
+                fprintf( fPtr, "%3c", 'C' );
             } else if (mtx2[ r ][ c ] == 110 || mtx2[ r ][ c ] == 210) {
-                fprintf( fPtr, "%2c%c", 'Z', '1' );
+                fprintf( fPtr, "%3c", 'A' );
             } else if (mtx2[ r ][ c ] == 111 || mtx2[ r ][ c ] == 211) {
-                fprintf( fPtr, "%2c%c", 'Z', '2' );
+                fprintf( fPtr, "%3c", 'B' );
             } else if (mtx2[ r ][ c ] == 112 || mtx2[ r ][ c ] == 212) {
-                fprintf( fPtr, "%2c%c", 'Z', '3' );
+                fprintf( fPtr, "%3c", 'C' );
             }
+
 
 //            else {
 //                if (bitCentrale == bit1) {
