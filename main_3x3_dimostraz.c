@@ -724,7 +724,7 @@ int main() {
                                 /********************************************/
                                 int arrNumCount[] = {0, 0, 0};
                                 //                sumMtx(mtx, arrNumSum, arrNumCount, arrHowMany012, arrDistribution); //spostare in uno dei rami if seguenti per indagare le singole tipologie
-                                if (mtxType > 999 && mtxType < 11000) { //NON CP - VIETATA 3x3
+                                if (mtxType > 999 && mtxType < 1100) { //NON CP - VIETATA 3x3
 
                                     cont_ncp_3x3++; //0 - NON CP - vietata o monocromatica
                                     printMtxToFile(mtx, mtx2, logPtr21, cont_MtxNoDuplicate, mtxType, bit1, bit2, bit3, bitCentrale,
@@ -1947,26 +1947,13 @@ void printMtxToFile( int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ], FILE *fPtr, 
 //            fprintf( fPtr, "%3d", mtx2[ r ][ c ] ); //stampa il bit reale
             if (mtx2[ r ][ c ] == 13) {
                 fprintf( fPtr, "%3c", '-' );
-            } else if (mtx2[ r ][ c ] == 3) {
+            } else if (mtx2[ r ][ c ] == 10 || mtx2[ r ][ c ] == 11 || mtx2[ r ][ c ] == 12) {
                 fprintf( fPtr, "%3c", 'X' );
-            } else if (mtx2[ r ][ c ] == 4) {
-                fprintf( fPtr, "%3c", 'X' );
-            } else if (mtx2[ r ][ c ] == 5) {
-                fprintf( fPtr, "%3c", 'X' );
-            } else if (mtx2[ r ][ c ] == 6) {
+            } else if (mtx2[ r ][ c ] == 113 || mtx2[ r ][ c ] == 213) {
                 fprintf( fPtr, "%3c", 'Y' );
-            } else if (mtx2[ r ][ c ] == 7) {
-                fprintf( fPtr, "%3c", 'Y' );
-            } else if (mtx2[ r ][ c ] == 8) {
-                fprintf( fPtr, "%3c", 'Y' );
-            } else if (mtx2[ r ][ c ] == 9) {
-                fprintf( fPtr, "%3c", 'Z' );
-            } else if (mtx2[ r ][ c ] == 10) {
-                fprintf( fPtr, "%3c", 'Z' );
-            } else if (mtx2[ r ][ c ] == 11) {
-                fprintf( fPtr, "%3c", 'Z' );
-            } else if (mtx2[ r ][ c ] == 18) {
-                fprintf( fPtr, "%3c", 'Y' );
+            } else if (mtx2[ r ][ c ] == 110 || mtx2[ r ][ c ] == 111 || mtx2[ r ][ c ] == 112 ||
+                       mtx2[ r ][ c ] == 210 || mtx2[ r ][ c ] == 211 || mtx2[ r ][ c ] == 212) {
+                fprintf( fPtr, "%2c%c", 'X', 'Y' );
             }
 
 //            else {
