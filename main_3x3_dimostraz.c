@@ -1204,10 +1204,10 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
     endC:
 
 
-    printf("%d | %d | %d\n%d | %d | %d\n%d | %d | %d\n\n",
-           mtx2[0][0], mtx2[0][1], mtx2[0][2],
-           mtx2[1][0], mtx2[1][1], mtx2[1][2],
-           mtx2[2][0], mtx2[2][1], mtx2[2][2]);
+//    printf("%d | %d | %d\n%d | %d | %d\n%d | %d | %d\n\n",
+//           mtx2[0][0], mtx2[0][1], mtx2[0][2],
+//           mtx2[1][0], mtx2[1][1], mtx2[1][2],
+//           mtx2[2][0], mtx2[2][1], mtx2[2][2]);
 
 
     if(equivR != 0 && equivC != 0) {
@@ -1945,42 +1945,50 @@ void printMtxToFile( int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ], FILE *fPtr, 
 
         for ( c = 0; c < NUM; c++ ) {
 //            fprintf( fPtr, "%3d", mtx2[ r ][ c ] ); //stampa il bit reale
+
             if (mtx2[ r ][ c ] == 13) {
                 fprintf( fPtr, "%3c", '-' );
-            } else if (mtx2[ r ][ c ] == 10 || mtx2[ r ][ c ] == 11 || mtx2[ r ][ c ] == 12) {
-                fprintf( fPtr, "%3c", 'X' );
+            } else if (mtx2[ r ][ c ] == 10) {
+                fprintf(fPtr, "%2c%c", 'X', '1');
+            } else if (mtx2[ r ][ c ] == 11) {
+                fprintf( fPtr, "%2c%c", 'X', '2' );
+            } else if (mtx2[ r ][ c ] == 12) {
+                fprintf( fPtr, "%2c%c", 'X', '3' );
             } else if (mtx2[ r ][ c ] == 113 || mtx2[ r ][ c ] == 213) {
                 fprintf( fPtr, "%3c", 'Y' );
-            } else if (mtx2[ r ][ c ] == 110 || mtx2[ r ][ c ] == 111 || mtx2[ r ][ c ] == 112 ||
-                       mtx2[ r ][ c ] == 210 || mtx2[ r ][ c ] == 211 || mtx2[ r ][ c ] == 212) {
-                fprintf( fPtr, "%2c%c", 'X', 'Y' );
+            } else if (mtx2[ r ][ c ] == 110 || mtx2[ r ][ c ] == 210) {
+                fprintf( fPtr, "%2c%c", 'Z', '1' );
+            } else if (mtx2[ r ][ c ] == 111 || mtx2[ r ][ c ] == 211) {
+                fprintf( fPtr, "%2c%c", 'Z', '2' );
+            } else if (mtx2[ r ][ c ] == 112 || mtx2[ r ][ c ] == 212) {
+                fprintf( fPtr, "%2c%c", 'Z', '3' );
             }
 
 //            else {
 //                if (bitCentrale == bit1) {
-//                    if( mtx2[ r ][ c ] == bit1) {
+//                    if( mtx[ r ][ c ] == bit1) {
 //                        fprintf( fPtr, "%3c", 'A' );
 ////                    fprintf( fPtr, "%3c", '-' );
-//                    } else if(mtx2[ r ][ c ] == bit2) {
+//                    } else if(mtx[ r ][ c ] == bit2) {
 //                        fprintf( fPtr, "%3c", 'B' );
-//                    } else if(mtx2[ r ][ c ] == bit3) {
+//                    } else if(mtx[ r ][ c ] == bit3) {
 //                        fprintf( fPtr, "%3c", 'C' );
 //                    }
 //                } else if(bitCentrale == bit2) {
-//                    if( mtx2[ r ][ c ] == bit1) {
+//                    if( mtx[ r ][ c ] == bit1) {
 //                        fprintf( fPtr, "%3c", 'A' );
-//                    } else if(mtx2[ r ][ c ] == bit2) {
+//                    } else if(mtx[ r ][ c ] == bit2) {
 //                        fprintf( fPtr, "%3c", 'B' );
 ////                    fprintf( fPtr, "%3c", '-' );
-//                    } else if(mtx2[ r ][ c ] == bit3) {
+//                    } else if(mtx[ r ][ c ] == bit3) {
 //                        fprintf( fPtr, "%3c", 'C' );
 //                    }
 //                } else if(bitCentrale == bit3) {
-//                    if( mtx2[ r ][ c ] == bit1) {
+//                    if( mtx[ r ][ c ] == bit1) {
 //                        fprintf( fPtr, "%3c", 'A' );
-//                    } else if(mtx2[ r ][ c ] == bit2) {
+//                    } else if(mtx[ r ][ c ] == bit2) {
 //                        fprintf( fPtr, "%3c", 'B' );
-//                    } else if(mtx2[ r ][ c ] == bit3) {
+//                    } else if(mtx[ r ][ c ] == bit3) {
 //                        fprintf( fPtr, "%3c", 'C' );
 ////                    fprintf( fPtr, "%3c", '-' );
 //                    }
