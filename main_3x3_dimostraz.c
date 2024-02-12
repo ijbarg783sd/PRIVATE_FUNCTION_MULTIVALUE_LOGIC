@@ -1077,14 +1077,14 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
             if(mtx[q][0] == mtx[q][1]) { //relaz in prime 2 colonne
                 if (C1 == 1 && C2 == 1) goto endC;
                 C1 = 1;
-                mtx2[q][0] = mtx[q][0] + 6;
-                mtx2[q][1] = mtx[q][1] + 6;
+                mtx2[q][0] = mtx2[q][0] + 6;
+                mtx2[q][1] = mtx2[q][1] + 6;
                 for(int w = 0; w <= 2; w++) {
                     if(mtx[w][1] == mtx[w][2]) {
                         if (C1 == 1 && C2 == 1) goto endC;
                         C2 = 1;
-                        mtx2[w][1] = mtx[w][1] + 6;
-                        mtx2[w][2] = mtx[w][2] + 6;
+                        mtx2[w][1] = mtx2[w][1] + 6;
+                        mtx2[w][2] = mtx2[w][2] + 6;
                         if (q == 0 && w == 0) equivC = 10;
                         if (q == 0 && w == 1) equivC = 11;
                         if (q == 0 && w == 2) equivC = 12;
@@ -1097,8 +1097,8 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
                     } else if (mtx[w][0] == mtx[w][2]) {
                         if (C1 == 1 && C2 == 1) goto endC;
                         C2 = 1;
-                        mtx2[w][0] = mtx[w][0] + 6;
-                        mtx2[w][2] = mtx[w][2] + 6;
+                        mtx2[w][0] = mtx2[w][0] + 6;
+                        mtx2[w][2] = mtx2[w][2] + 6;
                         if (q == 0 && w == 0) equivC = 20;
                         if (q == 0 && w == 1) equivC = 21;
                         if (q == 0 && w == 2) equivC = 22;
@@ -1113,14 +1113,14 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
             } else if(mtx[q][1] == mtx[q][2]) { //relaz in 2a e 3a colonna
                 if (C1 == 1 && C2 == 1) goto endC;
                 C1 = 1;
-                mtx2[q][1] = mtx[q][1] + 6;
-                mtx2[q][2] = mtx[q][2] + 6;
+                mtx2[q][1] = mtx2[q][1] + 6;
+                mtx2[q][2] = mtx2[q][2] + 6;
                 for(int e = 0; e <= 2; e++) {
                     if(mtx[e][0] == mtx[e][1]) {
                         if (C1 == 1 && C2 == 1) goto endC;
                         C2 = 1;
-                        mtx2[e][0] = mtx[e][0] + 6;
-                        mtx2[e][1] = mtx[e][1] + 6;
+                        mtx2[e][0] = mtx2[e][0] + 6;
+                        mtx2[e][1] = mtx2[e][1] + 6;
                         if (q == 0 && e == 0) equivC = 30;
                         if (q == 0 && e == 1) equivC = 31;
                         if (q == 0 && e == 2) equivC = 32;
@@ -1133,8 +1133,8 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
                     } else if (mtx[e][0] == mtx[e][2]) {
                         if (C1 == 1 && C2 == 1) goto endC;
                         C2 = 1;
-                        mtx2[e][0] = mtx[e][0] + 6;
-                        mtx2[e][2] = mtx[e][2] + 6;
+                        mtx2[e][0] = mtx2[e][0] + 6;
+                        mtx2[e][2] = mtx2[e][2] + 6;
                         if (q == 0 && e == 0) equivC = 40;
                         if (q == 0 && e == 1) equivC = 41;
                         if (q == 0 && e == 2) equivC = 42;
@@ -1150,14 +1150,14 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
             else if(mtx[q][0] == mtx[q][2]) { //relaz in 1a e 3a colonna - RAMO PROBABILMENTE SUPERFLUO - NON CAMBIA RISULTATO
                 if (C1 == 1 && C2 == 1) goto endC;
                 C1 = 1;
-                mtx2[q][0] = mtx[q][0] + 6;
-                mtx2[q][2] = mtx[q][2] + 6;
+                mtx2[q][0] = mtx2[q][0] + 6;
+                mtx2[q][2] = mtx2[q][2] + 6;
                 for(int ee = 0; ee <= 2; ee++) {
                     if(mtx[ee][0] == mtx[ee][1]) {
                         if (C1 == 1 && C2 == 1) goto endC;
                         C2 = 1;
-                        mtx2[ee][0] = mtx[ee][0] + 6;
-                        mtx2[ee][1] = mtx[ee][1] + 6;
+                        mtx2[ee][0] = mtx2[ee][0] + 6;
+                        mtx2[ee][1] = mtx2[ee][1] + 6;
                         if (q == 0 && ee == 0) equivC = 50;
                         if (q == 0 && ee == 1) equivC = 51;
                         if (q == 0 && ee == 2) equivC = 52;
@@ -1170,8 +1170,8 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
                     } else if (mtx[ee][1] == mtx[ee][2]) {
                         if (C1 == 1 && C2 == 1) goto endC;
                         C2 = 1;
-                        mtx2[ee][1] = mtx[ee][1] + 6;
-                        mtx2[ee][2] = mtx[ee][2] + 6;
+                        mtx2[ee][1] = mtx2[ee][1] + 6;
+                        mtx2[ee][2] = mtx2[ee][2] + 6;
                         if (q == 0 && ee == 0) equivC = 60;
                         if (q == 0 && ee == 1) equivC = 61;
                         if (q == 0 && ee == 2) equivC = 62;
