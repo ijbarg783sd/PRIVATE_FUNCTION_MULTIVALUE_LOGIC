@@ -725,6 +725,26 @@ int main() {
                                 int arrNumCount[] = {0, 0, 0};
                                 //                sumMtx(mtx, arrNumSum, arrNumCount, arrHowMany012, arrDistribution); //spostare in uno dei rami if seguenti per indagare le singole tipologie
                                 if (mtxType > 999 && mtxType < 1100) { //NON CP - VIETATA 3x3
+//                                if (mtxType > 1099 && mtxType < 1200) { //NON CP - VIETATA 3x3
+//                                if (mtxType > 1199 && mtxType < 1300) { //NON CP - VIETATA 3x3
+//                                if (mtxType > 1399 && mtxType < 1500) { //NON CP - VIETATA 3x3
+//                                if (mtxType > 1499 && mtxType < 1600) { //NON CP - VIETATA 3x3
+//                                if (mtxType > 1799 && mtxType < 1900) { //NON CP - VIETATA 3x3
+//                                if (mtxType > 2099 && mtxType < 2200) { //NON CP - VIETATA 3x3
+//                                if (mtxType > 2199 && mtxType < 2300) { //NON CP - VIETATA 3x3
+//                                if (mtxType > 2499 && mtxType < 2600) { //NON CP - VIETATA 3x3
+//                                if (mtxType > 3099 && mtxType < 3200) { //NON CP - VIETATA 3x3
+//                                if (mtxType > 3199 && mtxType < 3300) { //NON CP - VIETATA 3x3
+//                                if (mtxType > 3499 && mtxType < 3600) { //NON CP - VIETATA 3x3
+//                                if (mtxType > 4099 && mtxType < 4200) { //NON CP - VIETATA 3x3
+//                                if (mtxType > 4199 && mtxType < 4300) { //NON CP - VIETATA 3x3
+//                                if (mtxType > 4499 && mtxType < 4600) { //NON CP - VIETATA 3x3
+//                                if (mtxType > 5099 && mtxType < 5200) { //NON CP - VIETATA 3x3
+//                                if (mtxType > 5199 && mtxType < 5300) { //NON CP - VIETATA 3x3
+//                                if (mtxType > 5499 && mtxType < 5600) { //NON CP - VIETATA 3x3
+//                                if (mtxType > 6099 && mtxType < 6200) { //NON CP - VIETATA 3x3
+//                                if (mtxType > 6199 && mtxType < 6300) { //NON CP - VIETATA 3x3
+//                                if (mtxType > 6499 && mtxType < 6600) { //NON CP - VIETATA 3x3
 
                                     cont_ncp_3x3++; //0 - NON CP - vietata o monocromatica
                                     printMtxToFile(mtx, mtx2, logPtr21, cont_MtxNoDuplicate, mtxType, bit1, bit2, bit3, bitCentrale,
@@ -1228,10 +1248,10 @@ int checkMtx3x3(int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ]) {
     endC:
 
 
-    printf("%d\n%d\n%d\n%d\n%d\n%d\n%d\n%d\n%d\n",
-           mtx2[0][0], mtx2[0][1], mtx2[0][2],
-           mtx2[1][0], mtx2[1][1], mtx2[1][2],
-           mtx2[2][0], mtx2[2][1], mtx2[2][2]);
+//    printf("%d\n%d\n%d\n%d\n%d\n%d\n%d\n%d\n%d\n",
+//           mtx2[0][0], mtx2[0][1], mtx2[0][2],
+//           mtx2[1][0], mtx2[1][1], mtx2[1][2],
+//           mtx2[2][0], mtx2[2][1], mtx2[2][2]);
 
 
     if(equivR != 0 && equivC != 0) {
@@ -1970,49 +1990,49 @@ void printMtxToFile( int mtx[ NUM ][ NUM ], int mtx2[ NUM ][ NUM ], FILE *fPtr, 
         for ( c = 0; c < NUM; c++ ) {
 //            fprintf( fPtr, "%3d", mtx2[ r ][ c ] ); //stampa il bit reale
 
-//            if (mtx2[ r ][ c ] == 13) {
-//                fprintf( fPtr, "%3c", '-' );
-//            } else if (mtx2[ r ][ c ] == 10) {
-//                fprintf(fPtr, "%2c%c", 'X', '1');
-//            } else if (mtx2[ r ][ c ] == 11) {
-//                fprintf( fPtr, "%2c%c", 'X', '2' );
-//            } else if (mtx2[ r ][ c ] == 12) {
-//                fprintf( fPtr, "%2c%c", 'X', '3' );
-//            } else if (mtx2[ r ][ c ] == 114 || mtx2[ r ][ c ] == 214) {
-//                fprintf( fPtr, "%2c%c", 'Y', '1' );
-//            } else if (mtx2[ r ][ c ] == 115 || mtx2[ r ][ c ] == 215) {
-//                fprintf( fPtr, "%2c%c", 'Y', '2' );
-//            } else if (mtx2[ r ][ c ] == 116 || mtx2[ r ][ c ] == 216) {
-//                fprintf( fPtr, "%2c%c", 'Y', '3' );
-//            } else if (mtx2[ r ][ c ] == 110 || mtx2[ r ][ c ] == 210) {
-//                fprintf( fPtr, "%2c%c", 'Z', '1' );
-//            } else if (mtx2[ r ][ c ] == 111 || mtx2[ r ][ c ] == 211) {
-//                fprintf( fPtr, "%2c%c", 'Z', '2' );
-//            } else if (mtx2[ r ][ c ] == 112 || mtx2[ r ][ c ] == 212) {
-//                fprintf( fPtr, "%2c%c", 'Z', '3' );
-//            }
-
             if (mtx2[ r ][ c ] == 13) {
                 fprintf( fPtr, "%3c", '-' );
             } else if (mtx2[ r ][ c ] == 10) {
-                fprintf( fPtr, "%3c", 'A');
+                fprintf(fPtr, "%2c%c", 'X', '1');
             } else if (mtx2[ r ][ c ] == 11) {
-                fprintf( fPtr, "%3c", 'B' );
+                fprintf( fPtr, "%2c%c", 'X', '2' );
             } else if (mtx2[ r ][ c ] == 12) {
-                fprintf( fPtr, "%3c", 'C' );
+                fprintf( fPtr, "%2c%c", 'X', '3' );
             } else if (mtx2[ r ][ c ] == 114 || mtx2[ r ][ c ] == 214) {
-                fprintf( fPtr, "%3c", 'A' );
+                fprintf( fPtr, "%2c%c", 'Y', '1' );
             } else if (mtx2[ r ][ c ] == 115 || mtx2[ r ][ c ] == 215) {
-                fprintf( fPtr, "%3c", 'B' );
+                fprintf( fPtr, "%2c%c", 'Y', '2' );
             } else if (mtx2[ r ][ c ] == 116 || mtx2[ r ][ c ] == 216) {
-                fprintf( fPtr, "%3c", 'C' );
+                fprintf( fPtr, "%2c%c", 'Y', '3' );
             } else if (mtx2[ r ][ c ] == 110 || mtx2[ r ][ c ] == 210) {
-                fprintf( fPtr, "%3c", 'A' );
+                fprintf( fPtr, "%2c%c", 'Z', '1' );
             } else if (mtx2[ r ][ c ] == 111 || mtx2[ r ][ c ] == 211) {
-                fprintf( fPtr, "%3c", 'B' );
+                fprintf( fPtr, "%2c%c", 'Z', '2' );
             } else if (mtx2[ r ][ c ] == 112 || mtx2[ r ][ c ] == 212) {
-                fprintf( fPtr, "%3c", 'C' );
+                fprintf( fPtr, "%2c%c", 'Z', '3' );
             }
+
+//            if (mtx2[ r ][ c ] == 13) {
+//                fprintf( fPtr, "%3c", '-' );
+//            } else if (mtx2[ r ][ c ] == 10) {
+//                fprintf( fPtr, "%3c", 'A');
+//            } else if (mtx2[ r ][ c ] == 11) {
+//                fprintf( fPtr, "%3c", 'B' );
+//            } else if (mtx2[ r ][ c ] == 12) {
+//                fprintf( fPtr, "%3c", 'C' );
+//            } else if (mtx2[ r ][ c ] == 114 || mtx2[ r ][ c ] == 214) {
+//                fprintf( fPtr, "%3c", 'A' );
+//            } else if (mtx2[ r ][ c ] == 115 || mtx2[ r ][ c ] == 215) {
+//                fprintf( fPtr, "%3c", 'B' );
+//            } else if (mtx2[ r ][ c ] == 116 || mtx2[ r ][ c ] == 216) {
+//                fprintf( fPtr, "%3c", 'C' );
+//            } else if (mtx2[ r ][ c ] == 110 || mtx2[ r ][ c ] == 210) {
+//                fprintf( fPtr, "%3c", 'A' );
+//            } else if (mtx2[ r ][ c ] == 111 || mtx2[ r ][ c ] == 211) {
+//                fprintf( fPtr, "%3c", 'B' );
+//            } else if (mtx2[ r ][ c ] == 112 || mtx2[ r ][ c ] == 212) {
+//                fprintf( fPtr, "%3c", 'C' );
+//            }
 
 
 //            else {
